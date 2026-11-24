@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CodeCard from '../../components/CodeCard.astro';
 import Faq from '../../components/Faq.astro';
-import AdInArticle from '../../components/AdInArticle.astro';
+
 import { jogos } from '../../lib/games';
 import { doJogo } from '../../lib/codes';
 import type { Jogo, Pergunta } from '../../lib/types';
@@ -138,8 +138,6 @@ const jsonLd = [
         </p>
       </div>
     </section>
-
-    <AdInArticle />
 
     {
       ativos.length > 0 && (

@@ -119,14 +119,12 @@ scripts/
 
 ### Monetização (AdSense)
 
-A integração é acionada por variáveis de ambiente — sem elas, o site renderiza
-placeholders neutros com altura reservada (zero CLS). `ads.txt` é gerado no
-build a partir de `PUBLIC_ADSENSE_CLIENT`.
+A monetização usa só os anúncios automáticos do Google — basta o client no
+`<head>`; não há blocos manuais nem slots. `ads.txt` é gerado no build a partir
+de `PUBLIC_ADSENSE_CLIENT`.
 
 ```
 PUBLIC_ADSENSE_CLIENT=ca-pub-XXXXXXXXXXXXXXXX   # ID do publisher
-PUBLIC_ADSENSE_SLOT_TOP=1234567890               # bloco do topo
-PUBLIC_ADSENSE_SLOT_ARTIGO=0987654321            # bloco no meio do artigo
 ```
 
 Ative no Cloudflare Pages (Settings → Environment variables) ou no `.env`

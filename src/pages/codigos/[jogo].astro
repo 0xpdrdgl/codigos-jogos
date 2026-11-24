@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CodeCard from '../../components/CodeCard.astro';
 import Faq from '../../components/Faq.astro';
-import AdInArticle from '../../components/AdInArticle.astro';
+
 import { jogos } from '../../lib/games';
 import { doJogo, atualizadoEm } from '../../lib/codes';
 import { dataCurta, dataLonga } from '../../lib/dates';
@@ -116,8 +116,6 @@ const jsonLd = [
         }
       </div>
     </section>
-
-    <AdInArticle />
 
     <section aria-label="Como resgatar" data-revelar>
       <h2 class="font-mono text-sm font-bold tracking-[0.25em] text-volt uppercase">// como resgatar em {jogo.nome}</h2>
