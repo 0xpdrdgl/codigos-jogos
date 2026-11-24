@@ -30,7 +30,16 @@ jobs:
       - run: npm ci
       - run: npm run collect
       - name: Salva códigos publicados/expirados
+        id: dados
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'data: coleta automática de códigos'
           file_pattern: 'src/data/*.json'
+      # Só rebuilda e publica quando a base mudou — economiza builds.
+      - run: npm run build
+        if: steps.dados.outputs.changes_committed == 'true'
+      - run: npx wrangler pages deploy dist --project-name codigos-jogos --branch master
+        if: steps.dados.outputs.changes_committed == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
