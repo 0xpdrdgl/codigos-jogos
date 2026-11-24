@@ -6,7 +6,8 @@ import type { APIRoute } from 'astro';
  */
 export const GET: APIRoute = () => {
   const client = import.meta.env.PUBLIC_ADSENSE_CLIENT;
-  const corpo = client ? `google.com, ${client}, DIRECT, f08c47fec0942fa0\n` : '';
+  // ads.txt usa o ID "pub-…" sem o prefixo "ca-" do snippet do <head>
+  const corpo = client ? `google.com, ${client.replace(/^ca-/, '')}, DIRECT, f08c47fec0942fa0\n` : '';
   return new Response(corpo, {
     headers: { 'Content-Type': 'text/plain; charset=utf-8' },
   });
