@@ -38,6 +38,11 @@ jobs:
       # Só rebuilda e publica quando a base mudou — economiza builds.
       - run: npm run build
         if: steps.dados.outputs.changes_committed == 'true'
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+          PUBLIC_ADSENSE_CLIENT: ${{ vars.PUBLIC_ADSENSE_CLIENT }}
+          PUBLIC_ADSENSE_SLOT_TOP: ${{ vars.PUBLIC_ADSENSE_SLOT_TOP }}
+          PUBLIC_ADSENSE_SLOT_ARTIGO: ${{ vars.PUBLIC_ADSENSE_SLOT_ARTIGO }}
       - run: npx wrangler pages deploy dist --project-name codigos-jogos --branch master
         if: steps.dados.outputs.changes_committed == 'true'
         env:
