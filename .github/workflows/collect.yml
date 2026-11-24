@@ -29,6 +29,8 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run collect
+      # Rebase sobre commits que chegarem durante a coleta (autostash preserva as mudanças)
+      - run: git pull --rebase --autostash origin master
       - name: Salva códigos publicados/expirados
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
