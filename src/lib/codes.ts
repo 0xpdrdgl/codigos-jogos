@@ -50,6 +50,7 @@ export function validarCodigos(regexPorJogo: (slug: string) => RegExp | undefine
   const erros: string[] = [];
   const vistos = new Set<string>();
   const slugsConhecidos = new Set(jogos.map((j) => j.slug));
+  const jogosMistos = new Set(jogos.filter((j) => j.permiteMinusculas).map((j) => j.slug));
   const iso = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/;
   const statusValidos: StatusCodigo[] = ['ativo', 'expirado'];
   for (const c of codigos) {
@@ -62,7 +63,7 @@ export function validarCodigos(regexPorJogo: (slug: string) => RegExp | undefine
     if (!iso.test(c.ultimaVerificacao)) erros.push(`${chave}: ultimaVerificacao inválida`);
     const re = regexPorJogo(c.jogo);
     if (re && !re.test(c.codigo)) erros.push(`${chave}: fora do formato do jogo`);
-    if (c.codigo !== c.codigo.toUpperCase()) erros.push(`${chave}: normalize para CAIXA ALTA`);
+    if (!jogosMistos.has(c.jogo) && c.codigo !== c.codigo.toUpperCase()) erros.push(`${chave}: normalize para CAIXA ALTA`);
   }
   return erros;
 }

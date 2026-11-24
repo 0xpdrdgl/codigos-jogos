@@ -42,7 +42,11 @@ const BLOQUEADOS = new Set([
   'SPINS', 'COINS', 'GEMS', 'ITEMS', 'BOOSTS', 'STATUS', 'NOTE', 'WIKI',
   'FANDOM', 'EDIT', 'SOURCE', 'HISTORY', 'PAGE', 'GAME', 'VERSION',
   'MAINTENANCE', 'GUIDE', 'PATCH', 'EVENT', 'EVENTS', 'FREE', 'GIFT',
-  'GIFTS', 'TODAY', 'HERE', 'LIST', 'SEASON', 'SERVER', 'PLAYERS',
+  'GIFTS', 'TODAY', 'HERE', 'LIST', 'SEASON', 'SERVER', 'SERVERS',
+  'PLAYERS', 'PLAY', 'NAVIGATION', 'PRIVATE', 'RECENT', 'POSTS', 'POST',
+  'RESET', 'NOTE', 'SEA', 'BAG', 'RELL', 'NOVO', 'NOVA', 'ATUALIZADO',
+  'JANEIRO', 'FEVEREIRO', 'MARCO', 'ABRIL', 'MAIO', 'JUNHO', 'JULHO',
+  'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO',
 ]);
 
 const JANELA_CONTEXTO = 90;
@@ -86,9 +90,16 @@ export function extrairCodigos(
         // só letras (ex.: GENSHINGIFT) só conta perto de uma palavra-gatilho
         if (achados.get(token) !== 'alta') achados.set(token, 'media');
       }
-    } else if (opcoes?.permiteMinusculas && pertoDeGatilho && (/\d/.test(token) || token.includes('_'))) {
-      // misto tipo "Sub2Gamer"/"KITT_reset": dígito/underline + contexto
-      if (achados.get(token) !== 'alta') achados.set(token, 'media');
+    } else if (opcoes?.permiteMinusculas && pertoDeGatilho) {
+      // Misto tipo "Sub2Gamer"/"Enyu_is_Pro": exige dígito, ou underline
+      // com algum segmento minúsculo (filtra rótulos de wiki em
+      // Title_Case_Snake como "Private_Servers"/"Stat_Reset").
+      const seg = token.split('_');
+      const temSegMinusculo = seg.some((s) => s.length > 0 && s[0] === s[0].toLowerCase());
+      const temSegBloqueado = seg.some((s) => BLOQUEADOS.has(s.toUpperCase()) || opcoes?.bloqueados?.has(s.toUpperCase()));
+      if (!temSegBloqueado && !/^2F/i.test(token) && (/\d/.test(token) || (token.includes('_') && temSegMinusculo))) {
+        if (achados.get(token) !== 'alta') achados.set(token, 'media');
+      }
     }
   }
   return [...achados.entries()].map(([codigo, confianca]) => ({ codigo, confianca }));

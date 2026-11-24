@@ -30,21 +30,27 @@ jobs:
       - run: npm ci
       - run: npm run collect
       - name: Salva códigos publicados/expirados
-        id: dados
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'data: coleta automática de códigos'
           file_pattern: 'src/data/*.json'
-      # Só rebuilda e publica quando a base mudou — economiza builds.
+      # Só rebuilda e publica quando a base mudou (último commit = bot).
+      - id: mudou
+        run: |
+          if git log -1 --pretty=%cn | grep -q "github-actions"; then
+            echo "mudou=true" >> $GITHUB_OUTPUT
+          else
+            echo "mudou=false" >> $GITHUB_OUTPUT
+          fi
       - run: npm run build
-        if: steps.dados.outputs.changes_committed == 'true'
+        if: steps.mudou.outputs.mudou == 'true'
         env:
           SITE_URL: ${{ vars.SITE_URL }}
           PUBLIC_ADSENSE_CLIENT: ${{ vars.PUBLIC_ADSENSE_CLIENT }}
           PUBLIC_ADSENSE_SLOT_TOP: ${{ vars.PUBLIC_ADSENSE_SLOT_TOP }}
           PUBLIC_ADSENSE_SLOT_ARTIGO: ${{ vars.PUBLIC_ADSENSE_SLOT_ARTIGO }}
       - run: npx wrangler pages deploy dist --project-name codigos-jogos --branch master
-        if: steps.dados.outputs.changes_committed == 'true'
+        if: steps.mudou.outputs.mudou == 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
