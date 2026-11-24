@@ -1,27 +1,30 @@
 @import 'tailwindcss';
 
 /*
- * Design tokens — minimalismo utilitário premium.
- * Monocromia quente + pastéis dessaturados para significado semântico.
+ * Design tokens — HUD de jogo.
+ * Fundo quase-preto com leve tom de verde, acento "volt" (verde-ácido)
+ * dominante, cantos chanfrados e tipografia técnica.
  */
 @theme {
-  --color-canvas: #fbfbfa;
-  --color-surface: #ffffff;
-  --color-ink: #1a1a19;
-  --color-ink-muted: #787774;
-  --color-line: #eae9e6;
+  --color-canvas: #090b08;
+  --color-surface: #101410;
+  --color-ink: #e9efe2;
+  --color-ink-muted: #7d8a78;
+  --color-line: #20291f;
 
-  --color-ok-bg: #edf3ec;
-  --color-ok-fg: #346538;
-  --color-no-bg: #fdebec;
-  --color-no-fg: #9f2f2d;
-  --color-info-bg: #e1f3fe;
-  --color-info-fg: #1f6c9f;
-  --color-warn-bg: #fbf3db;
-  --color-warn-fg: #956400;
+  --color-volt: #b9f53c;
+  --color-volt-dim: #5f7d1f;
 
-  --font-display:
-    'Newsreader Variable', 'Newsreader', Georgia, 'Times New Roman', serif;
+  --color-ok-bg: #b9f53c;
+  --color-ok-fg: #0d120a;
+  --color-no-bg: #3d1f1f;
+  --color-no-fg: #ff7d6b;
+  --color-info-bg: #14242e;
+  --color-info-fg: #5ec4e8;
+  --color-warn-bg: #2e2410;
+  --color-warn-fg: #f5b83c;
+
+  --font-display: 'Chakra Petch', 'Segoe UI', sans-serif;
   --font-body:
     -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', 'Helvetica Neue', Arial,
     sans-serif;
@@ -29,29 +32,68 @@
     ui-monospace, 'SF Mono', 'Cascadia Code', 'JetBrains Mono', Consolas, monospace;
 }
 
-/* Tipografia base */
+/* Fundo: grade fina de terminal + brilho volt suave no topo. */
 body {
   font-feature-settings: 'kern';
   text-rendering: optimizeLegibility;
+  background-color: var(--color-canvas);
+  background-image:
+    radial-gradient(ellipse 90% 50% at 50% -10%, rgb(185 245 60 / 0.07), transparent),
+    linear-gradient(rgb(185 245 60 / 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(185 245 60 / 0.028) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    40px 40px,
+    40px 40px;
 }
 
 ::selection {
-  background: #e1f3fe;
+  background: var(--color-volt);
+  color: #0d120a;
 }
 
-/* Revelação sutil ao entrar na viewport — apenas com JS ativo,
-   para não esconder conteúdo quando o JS falha. */
+/* Cantos chanfrados — a assinatura HUD. */
+.cut {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+}
+
+.cut-pequeno {
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+}
+
+/* Ponto pulsante de "monitorando/ativo". */
+@keyframes pulsar {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgb(185 245 60 / 0.55);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 0 6px rgb(185 245 60 / 0);
+  }
+}
+
+.ponto-volt {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--color-volt);
+  animation: pulsar 1.8s ease-out infinite;
+}
+
+/* Revelação ao entrar na viewport — apenas com JS ativo. */
 .js [data-revelar] {
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateY(14px);
 }
 
 .js [data-revelar].na-tela {
   opacity: 1;
   transform: none;
   transition:
-    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -60,10 +102,13 @@ body {
     transform: none;
     transition: none;
   }
+  .ponto-volt {
+    animation: none;
+  }
 }
 
-/* Link de salto e foco visível */
+/* Foco visível */
 :focus-visible {
-  outline: 2px solid #1a1a19;
+  outline: 2px solid var(--color-volt);
   outline-offset: 2px;
 }

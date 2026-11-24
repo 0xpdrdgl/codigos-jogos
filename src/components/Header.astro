@@ -6,27 +6,27 @@ const ativo = (base: string) => pathname.startsWith(base);
 <header class="border-b border-line">
   <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
     <a href="/" class="group flex items-center gap-3" aria-label="Códigos Jogos — página inicial">
-      <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true" class="rounded-md">
-        <rect width="64" height="64" rx="12" fill="#1a1a19"></rect>
-        <rect x="14" y="18" width="36" height="7" rx="3.5" fill="#ffffff"></rect>
-        <rect x="14" y="31" width="24" height="7" rx="3.5" fill="#ffffff" opacity="0.55"></rect>
-        <rect x="14" y="44" width="30" height="7" rx="3.5" fill="#ffffff" opacity="0.3"></rect>
+      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true" class="cut-pequeno">
+        <rect width="64" height="64" fill="#b9f53c"></rect>
+        <text
+          x="32" y="44" text-anchor="middle" font-family="monospace" font-size="34" font-weight="bold" fill="#0d120a"
+        >&gt;_</text>
       </svg>
-      <span class="font-display text-xl tracking-tight">Códigos Jogos</span>
+      <span class="font-display text-lg font-semibold tracking-wide uppercase">Códigos Jogos</span>
     </a>
-    <nav aria-label="Navegação principal" class="flex items-center gap-1 text-sm">
+    <nav aria-label="Navegação principal" class="flex items-center gap-1 font-mono text-xs tracking-wider uppercase">
       <a
         href="/codigos/"
         class:list={[
-          'rounded-md px-3 py-1.5 transition-colors hover:bg-surface',
-          ativo('/codigos') ? 'text-ink' : 'text-ink-muted',
+          'cut-pequeno px-3 py-1.5 transition-colors hover:bg-surface hover:text-volt',
+          ativo('/codigos') ? 'text-volt' : 'text-ink-muted',
         ]}
-      >Todos os jogos</a>
+      >Jogos</a>
       <a
         href="/sobre/"
         class:list={[
-          'rounded-md px-3 py-1.5 transition-colors hover:bg-surface',
-          ativo('/sobre') ? 'text-ink' : 'text-ink-muted',
+          'cut-pequeno px-3 py-1.5 transition-colors hover:bg-surface hover:text-volt',
+          ativo('/sobre') ? 'text-volt' : 'text-ink-muted',
         ]}
       >Sobre</a>
     </nav>

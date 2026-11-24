@@ -62,30 +62,40 @@ const jsonLd = [
     />
 
     <header class="mt-6" data-revelar>
-      <h1 class="font-display text-4xl tracking-tight">Como resgatar códigos em {jogo.nome}</h1>
-      <p class="mt-3 max-w-2xl text-ink-muted">
+      <p class="font-mono text-xs font-bold tracking-[0.3em] text-volt uppercase">// tutorial</p>
+      <h1 class="mt-4 font-display text-5xl font-bold tracking-tight uppercase">Como resgatar em {jogo.nome}</h1>
+      <p class="mt-4 max-w-2xl text-ink-muted">
         O resgate de {jogo.nome} é feito {jogo.resgateInGame ? 'dentro do jogo ou ' : ''}
         na página oficial da {jogo.editora} — nunca em sites de terceiros que peçam
         sua senha.
       </p>
     </header>
 
-    <section class="mt-8" aria-label="Passo a passo" data-revelar>
-      <h2 class="font-display text-2xl tracking-tight">Passo a passo</h2>
-      <ol class="mt-4 list-decimal space-y-3 pl-6 leading-relaxed">
-        {jogo.passosResgate.map((passo) => <li>{passo}</li>)}
+    <section class="mt-10" aria-label="Passo a passo" data-revelar>
+      <h2 class="font-mono text-sm font-bold tracking-[0.25em] text-volt uppercase">// passo a passo</h2>
+      <ol class="mt-4 space-y-2.5">
+        {
+          jogo.passosResgate.map((passo, i) => (
+            <li class="flex items-start gap-3 leading-relaxed">
+              <span class="cut-pequeno mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center border border-volt-dim font-mono text-[11px] font-bold text-volt">
+                {i + 1}
+              </span>
+              <span>{passo}</span>
+            </li>
+          ))
+        }
       </ol>
-      <div class="mt-6 flex flex-wrap gap-3">
+      <div class="mt-7 flex flex-wrap gap-3">
         <a
           href={jogo.resgateOficial}
           rel="nofollow noopener noreferrer"
-          class="rounded-md bg-ink px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-85"
-        >Abrir página oficial de resgate</a>
+          class="cut-pequeno bg-volt px-5 py-2.5 font-mono text-xs font-bold tracking-widest text-canvas uppercase transition-opacity hover:opacity-85"
+        >abrir resgate oficial ↗</a>
         <a
           href={`/codigos/${jogo.slug}/`}
-          class="rounded-md border border-line px-5 py-2.5 text-sm font-medium transition-colors hover:border-ink-muted"
+          class="cut-pequeno border border-line px-5 py-2.5 font-mono text-xs font-bold tracking-widest text-ink-muted uppercase transition-colors hover:border-volt-dim hover:text-volt"
         >
-          Ver {ativos.length > 0 ? `${ativos.length} código${ativos.length !== 1 ? 's' : ''} ativo${ativos.length !== 1 ? 's' : ''}` : 'códigos'}
+          ver {ativos.length > 0 ? `${ativos.length} ativo${ativos.length !== 1 ? 's' : ''}` : 'códigos'}
         </a>
       </div>
     </section>
@@ -93,7 +103,7 @@ const jsonLd = [
     <AdInArticle />
 
     <section aria-label="Formato dos códigos" data-revelar>
-      <h2 class="font-display text-2xl tracking-tight">Como é um código de {jogo.nome}</h2>
+      <h2 class="font-mono text-sm font-bold tracking-[0.25em] text-volt uppercase">// formato do código</h2>
       <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
         Os códigos de {jogo.nome} têm formato {jogo.palavrasFormato}. Se o que você
         encontrou não segue esse formato, provavelmente não é um código de resgate —
@@ -101,15 +111,15 @@ const jsonLd = [
       </p>
       {
         atualizado && (
-          <p class="mt-3 text-sm text-ink-muted">
-            Última verificação da nossa lista: {dataLonga(atualizado)}.
+          <p class="mt-3 font-mono text-xs text-ink-muted">
+            última verificação da lista: {dataLonga(atualizado)}
           </p>
         )
       }
     </section>
 
     <section class="mt-12" aria-label="Perguntas frequentes" data-revelar>
-      <h2 class="font-display text-2xl tracking-tight">Perguntas frequentes</h2>
+      <h2 class="font-mono text-sm font-bold tracking-[0.25em] text-volt uppercase">// perguntas frequentes</h2>
       <div class="mt-4">
         <Faq perguntas={jogo.faq} />
       </div>

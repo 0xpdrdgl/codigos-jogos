@@ -15,34 +15,38 @@ const data = new Date(codigo.ultimaVerificacao).toLocaleDateString('pt-BR', {
 
 <div
   class:list={[
-    'flex flex-wrap items-center justify-between gap-3 rounded-lg border bg-surface px-4 py-3',
-    expirado ? 'border-line opacity-60' : 'border-line',
+    'cut flex flex-wrap items-center justify-between gap-3 border px-4 py-3.5',
+    expirado ? 'border-line bg-surface opacity-50' : 'border-line bg-surface',
   ]}
 >
   <div class="flex items-center gap-3">
     <code
       class:list={[
-        'rounded bg-canvas px-2.5 py-1 font-mono text-sm tracking-wider',
-        expirado && 'line-through',
+        'bg-canvas px-3 py-1.5 font-mono text-sm font-bold tracking-[0.2em]',
+        expirado ? 'text-ink-muted line-through' : 'text-volt',
       ]}
-    >{codigo.codigo}</code>
+    ><span class="mr-1.5 select-none opacity-50">&gt;</span>{codigo.codigo}</code>
     {
       expirado ? (
-        <span class="rounded-full bg-no-bg px-2 py-0.5 text-xs font-medium text-no-fg">expirado</span>
+        <span class="cut-pequeno bg-no-bg px-2 py-0.5 font-mono text-[10px] font-bold tracking-widest text-no-fg uppercase">
+          expirado
+        </span>
       ) : (
-        <span class="rounded-full bg-ok-bg px-2 py-0.5 text-xs font-medium text-ok-fg">ativo</span>
+        <span class="cut-pequeno bg-ok-bg px-2 py-0.5 font-mono text-[10px] font-bold tracking-widest text-ok-fg uppercase">
+          ativo
+        </span>
       )
     }
   </div>
   <div class="flex items-center gap-4 text-sm text-ink-muted">
-    {codigo.recompensa && <span>{codigo.recompensa}</span>}
-    <span class="text-xs">verificado em {data}</span>
+    {codigo.recompensa && <span class="text-xs">{codigo.recompensa}</span>}
+    <span class="font-mono text-xs">verific. {data}</span>
     {
       !expirado && (
         <button
           type="button"
           data-codigo={codigo.codigo}
-          class="rounded-md border border-line px-2.5 py-1 text-xs font-medium transition-colors hover:border-ink-muted"
+          class="cut-pequeno border border-volt-dim px-3 py-1.5 font-mono text-[11px] font-bold tracking-widest text-volt uppercase transition-colors hover:border-volt hover:bg-volt hover:text-canvas"
         >
           <span data-rotulo>copiar</span>
         </button>

@@ -5,14 +5,15 @@ import { jogos } from '../lib/games';
 
 <BaseLayout title="Página não encontrada" canonical="/404">
   <section class="mx-auto max-w-5xl px-6 pt-24 pb-16 text-center">
-    <h1 class="font-display text-5xl tracking-tight">404</h1>
-    <p class="mt-4 text-ink-muted">Esta página não existe — mas os códigos estão aqui:</p>
-    <ul class="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+    <p class="font-mono text-xs font-bold tracking-[0.3em] text-volt uppercase">// erro</p>
+    <h1 class="mt-4 font-display text-6xl font-bold tracking-tight uppercase">404</h1>
+    <p class="mt-4 text-ink-muted">Fase não encontrada. Os códigos estão por aqui:</p>
+    <ul class="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 font-mono text-xs tracking-wider uppercase">
       {
         jogos.map((jogo) => (
           <li>
-            <a href={`/codigos/${jogo.slug}/`} class="underline decoration-line underline-offset-4 hover:text-ink">
-              Códigos {jogo.nome}
+            <a href={`/codigos/${jogo.slug}/`} class="text-ink-muted underline underline-offset-4 hover:text-volt">
+              {jogo.nome}
             </a>
           </li>
         ))

@@ -16,14 +16,14 @@ const dataAtualizado = atualizado
       sites e aplicativos oficiais das editoras — nunca digite sua senha de jogo em
       páginas de terceiros.
     </p>
-    <p class="mt-4">
-      {jogos.length} jogos monitorados{dataAtualizado ? ` · base atualizada em ${dataAtualizado}` : ''}.
+    <p class="mt-4 font-mono text-xs tracking-wider uppercase">
+      <span class="text-volt">&gt;_</span> {jogos.length} jogos monitorados{dataAtualizado ? ` · atualizado ${dataAtualizado}` : ''}
     </p>
-    <nav aria-label="Rodapé" class="mt-6 flex flex-wrap gap-x-6 gap-y-2">
-      <a class="underline decoration-line underline-offset-4 hover:text-ink" href="/">Início</a>
-      <a class="underline decoration-line underline-offset-4 hover:text-ink" href="/codigos/">Todos os jogos</a>
-      <a class="underline decoration-line underline-offset-4 hover:text-ink" href="/sobre/">Sobre e fontes</a>
-      <a class="underline decoration-line underline-offset-4 hover:text-ink" href="/politica-de-privacidade/">Política de privacidade</a>
+    <nav aria-label="Rodapé" class="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs tracking-wider uppercase">
+      <a class="text-ink-muted underline underline-offset-4 hover:text-volt" href="/">Início</a>
+      <a class="text-ink-muted underline underline-offset-4 hover:text-volt" href="/codigos/">Jogos</a>
+      <a class="text-ink-muted underline underline-offset-4 hover:text-volt" href="/sobre/">Sobre</a>
+      <a class="text-ink-muted underline underline-offset-4 hover:text-volt" href="/politica-de-privacidade/">Privacidade</a>
     </nav>
     <p class="mt-6 text-xs">
       © {ano} Códigos Jogos. Site de fãs, sem afiliação com HoYoverse, Garena ou

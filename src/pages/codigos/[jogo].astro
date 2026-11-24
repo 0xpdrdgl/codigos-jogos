@@ -60,24 +60,26 @@ const jsonLd = [
     <Breadcrumbs itens={[{ nome: 'Códigos', href: '/codigos/' }, { nome: jogo.nome, href: `/codigos/${jogo.slug}/` }]} />
 
     <header class="mt-6" data-revelar>
-      <h1 class="font-display text-4xl tracking-tight">Códigos de {jogo.nome}</h1>
-      <p class="mt-3 max-w-2xl text-ink-muted">
-        {ativos.length} código{ativos.length !== 1 ? 's' : ''} ativo{ativos.length !== 1 ? 's' : ''}
-        {atualizado && <> · última verificação em {dataLonga(atualizado)}</>}.
+      <p class="flex items-center gap-2.5 font-mono text-xs font-bold tracking-[0.3em] text-volt uppercase">
+        <span class="ponto-volt" aria-hidden="true"></span>
+        {ativos.length > 0 ? `${ativos.length} código${ativos.length !== 1 ? 's' : ''} ativo${ativos.length !== 1 ? 's' : ''}` : 'monitorando'}
+      </p>
+      <h1 class="mt-4 font-display text-5xl font-bold tracking-tight uppercase">Códigos de {jogo.nome}</h1>
+      <p class="mt-4 max-w-2xl text-ink-muted">
+        {atualizado && <>Última verificação em {dataLonga(atualizado)}. </>}
         Códigos de {jogo.nome} têm formato {jogo.palavrasFormato}.
       </p>
     </header>
 
-    <section class="mt-8" aria-label="Códigos ativos" data-revelar>
-      <h2 class="font-display text-2xl tracking-tight">Ativos</h2>
+    <section class="mt-10" aria-label="Códigos ativos" data-revelar>
+      <h2 class="font-mono text-sm font-bold tracking-[0.25em] text-volt uppercase">// ativos</h2>
       <div class="mt-4 space-y-3">
         {
           ativos.length === 0 ? (
-            <p class="rounded-lg border border-dashed border-line px-4 py-6 text-center text-sm text-ink-muted">
-              Nenhum código ativo no momento — códigos novos entram aqui assim que
-              passam pela revisão. Enquanto isso, veja o
-              <a class="underline decoration-line underline-offset-4" href={`/codigos/${jogo.slug}/como-resgatar/`}>tutorial de resgate</a>
-              para estar pronto quando sair.
+            <p class="cut border border-dashed border-line px-4 py-6 text-center font-mono text-sm text-ink-muted">
+              // nenhum código ativo — os novos entram aqui assim que passam pela revisão.<br />
+              <a class="text-volt underline underline-offset-4" href={`/codigos/${jogo.slug}/como-resgatar/`}>veja o tutorial de resgate</a>
+              {' '}para estar pronto quando sair.
             </p>
           ) : (
             ativos.map((codigo) => <CodeCard codigo={codigo} />)
@@ -89,30 +91,39 @@ const jsonLd = [
     <AdInArticle />
 
     <section aria-label="Como resgatar" data-revelar>
-      <h2 class="font-display text-2xl tracking-tight">Como resgatar em {jogo.nome}</h2>
-      <ol class="mt-4 list-decimal space-y-2 pl-6 text-sm leading-relaxed text-ink-muted">
-        {jogo.passosResgate.map((passo) => <li>{passo}</li>)}
+      <h2 class="font-mono text-sm font-bold tracking-[0.25em] text-volt uppercase">// como resgatar em {jogo.nome}</h2>
+      <ol class="mt-4 space-y-2.5">
+        {
+          jogo.passosResgate.map((passo, i) => (
+            <li class="flex items-start gap-3 text-sm leading-relaxed text-ink-muted">
+              <span class="cut-pequeno mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center border border-volt-dim font-mono text-[11px] font-bold text-volt">
+                {i + 1}
+              </span>
+              {passo}
+            </li>
+          ))
+        }
       </ol>
-      <p class="mt-4 text-sm">
+      <p class="mt-5 text-sm">
         <a
           href={`/codigos/${jogo.slug}/como-resgatar/`}
-          class="underline decoration-line underline-offset-4 hover:text-ink"
-        >Tutorial completo de resgate</a>
-        <span class="mx-2 text-line">·</span>
+          class="font-mono text-xs tracking-wider text-volt uppercase underline underline-offset-4"
+        >tutorial completo →</a>
+        <span class="mx-3 text-line">|</span>
         <a
           href={jogo.resgateOficial}
           rel="nofollow noopener noreferrer"
-          class="underline decoration-line underline-offset-4 hover:text-ink"
-        >Página oficial de resgate</a>
+          class="font-mono text-xs tracking-wider text-ink-muted uppercase underline underline-offset-4 hover:text-volt"
+        >página oficial de resgate ↗</a>
       </p>
     </section>
 
     {
       expirados.length > 0 && (
         <section class="mt-12" aria-label="Códigos expirados" data-revelar>
-          <h2 class="font-display text-2xl tracking-tight">Expirados recentemente</h2>
+          <h2 class="font-mono text-sm font-bold tracking-[0.25em] text-ink-muted uppercase">// expirados recentemente</h2>
           <p class="mt-2 text-sm text-ink-muted">
-            Guardamos o histórico para você conferir se um código que achou por aí já venceu.
+            Histórico para conferir se aquele código que você achou já venceu.
           </p>
           <div class="mt-4 space-y-3">
             {expirados.slice(0, 10).map((codigo) => <CodeCard codigo={codigo} expirado />)}
@@ -122,20 +133,20 @@ const jsonLd = [
     }
 
     <section class="mt-12" aria-label="Perguntas frequentes" data-revelar>
-      <h2 class="font-display text-2xl tracking-tight">Perguntas frequentes</h2>
+      <h2 class="font-mono text-sm font-bold tracking-[0.25em] text-volt uppercase">// perguntas frequentes</h2>
       <div class="mt-4">
         <Faq perguntas={jogo.faq} />
       </div>
     </section>
 
     <section class="mt-12" aria-label="Outros jogos" data-revelar>
-      <h2 class="font-display text-2xl tracking-tight">Outros jogos</h2>
-      <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+      <h2 class="font-mono text-sm font-bold tracking-[0.25em] text-volt uppercase">// outros jogos</h2>
+      <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs tracking-wider uppercase">
         {
           outrosJogos.map((j) => (
             <li>
-              <a href={`/codigos/${j.slug}/`} class="underline decoration-line underline-offset-4 hover:text-ink">
-                Códigos {j.nome}
+              <a href={`/codigos/${j.slug}/`} class="text-ink-muted underline underline-offset-4 hover:text-volt">
+                {j.nome}
               </a>
             </li>
           ))

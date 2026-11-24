@@ -35,63 +35,69 @@ const jsonLd = [
   canonical="/"
   jsonLd={jsonLd}
 >
-  <section class="mx-auto max-w-5xl px-6 pt-16" data-revelar>
-    <p class="text-sm font-medium tracking-widest text-ink-muted uppercase">Atualizado todo dia</p>
-    <h1 class="mt-3 font-display text-4xl leading-tight tracking-tight sm:text-5xl">
-      Códigos de resgate de jogos, sem código falso.
-    </h1>
-    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-muted">
-      Coletamos automaticamente os canais oficiais e as comunidades de cada jogo.
-      Todo código entra aqui só depois de revisão manual — com a data da última
-      verificação à mostra.
+  <section class="mx-auto max-w-5xl px-6 pt-20" data-revelar>
+    <p class="flex items-center gap-2.5 font-mono text-xs font-bold tracking-[0.3em] text-volt uppercase">
+      <span class="ponto-volt" aria-hidden="true"></span>
+      atualizado todo dia
     </p>
-    <div class="mt-8 flex flex-wrap gap-6 text-sm">
-      <div>
-        <span class="font-display text-3xl">{jogos.length}</span>
-        <span class="ml-1 text-ink-muted">jogos monitorados</span>
+    <h1 class="mt-5 font-display text-5xl font-bold leading-[1.05] tracking-tight uppercase sm:text-6xl">
+      Códigos de jogos<br />
+      <span class="text-volt">que funcionam.</span>
+    </h1>
+    <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink-muted">
+      Bots varrem as fontes oficiais e as comunidades de cada jogo de hora em hora.
+      Cada código passa por revisão humana antes de entrar na lista — com a data da
+      última verificação à mostra.
+    </p>
+    <div class="mt-10 flex flex-wrap gap-3 font-mono text-xs tracking-wider uppercase">
+      <div class="cut-pequeno border border-line bg-surface px-4 py-2.5">
+        <span class="text-xl font-bold text-volt">{jogos.length}</span>
+        <span class="ml-2 text-ink-muted">jogos monitorados</span>
       </div>
-      <div>
-        <span class="font-display text-3xl">{totalAtivos}</span>
-        <span class="ml-1 text-ink-muted">códigos ativos agora</span>
+      <div class="cut-pequeno border border-line bg-surface px-4 py-2.5">
+        <span class="text-xl font-bold text-volt">{totalAtivos}</span>
+        <span class="ml-2 text-ink-muted">códigos ativos</span>
       </div>
       {
         atualizado && (
-          <div>
-            <span class="font-display text-3xl">·</span>
-            <span class="ml-2 text-ink-muted">base atualizada em {dataLonga(atualizado)}</span>
+          <div class="cut-pequeno border border-line bg-surface px-4 py-2.5">
+            <span class="text-ink-muted">últ. verificação · {dataLonga(atualizado)}</span>
           </div>
         )
       }
     </div>
   </section>
 
-  <section class="mx-auto max-w-5xl px-6 pt-14" aria-label="Jogos monitorados" data-revelar>
-    <h2 class="font-display text-2xl tracking-tight">Jogos monitorados</h2>
-    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+  <section class="mx-auto max-w-5xl px-6 pt-16" aria-label="Jogos monitorados" data-revelar>
+    <h2 class="font-mono text-sm font-bold tracking-[0.25em] text-volt uppercase">// jogos monitorados</h2>
+    <div class="mt-5 grid gap-4 sm:grid-cols-2">
       {
         jogos.map((jogo) => {
           const n = ativos.get(jogo.slug) ?? 0;
           return (
             <a
               href={`/codigos/${jogo.slug}/`}
-              class="group rounded-lg border border-line bg-surface px-5 py-5 transition-colors hover:border-ink-muted"
+              class="group cut border border-line bg-surface px-5 py-5 transition-colors hover:border-volt-dim"
             >
               <div class="flex items-center justify-between gap-4">
                 <div>
-                  <span class="block text-lg font-medium">{jogo.nome}</span>
-                  <span class="mt-0.5 block text-xs text-ink-muted">{jogo.editora}</span>
+                  <span class="block font-display text-xl font-semibold tracking-wide uppercase group-hover:text-volt">
+                    {jogo.nome}
+                  </span>
+                  <span class="mt-0.5 block font-mono text-xs text-ink-muted">{jogo.editora}</span>
                 </div>
                 <span
                   class:list={[
-                    'rounded-full px-3 py-1 text-xs font-medium',
-                    n > 0 ? 'bg-ok-bg text-ok-fg' : 'bg-canvas text-ink-muted',
+                    'flex items-center gap-2 font-mono text-xs tracking-wider uppercase',
+                    n > 0 ? 'text-volt' : 'text-ink-muted',
                   ]}
                 >
+                  {n > 0 && <span class="ponto-volt" aria-hidden="true" />}
                   {n > 0 ? `${n} ativo${n > 1 ? 's' : ''}` : 'sem ativos'}
                 </span>
               </div>
-              <span class="mt-3 block text-sm text-ink-muted underline decoration-line underline-offset-4 group-hover:text-ink">
-                ver códigos e como resgatar
+              <span class="mt-3 block font-mono text-xs tracking-wider text-ink-muted uppercase group-hover:text-volt">
+                ver códigos →
               </span>
             </a>
           );
@@ -101,8 +107,8 @@ const jsonLd = [
   </section>
 
   <section class="mx-auto max-w-5xl px-6 pt-16" aria-label="Como funciona" data-revelar>
-    <h2 class="font-display text-2xl tracking-tight">Como funciona</h2>
-    <div class="mt-4 grid gap-4 sm:grid-cols-3">
+    <h2 class="font-mono text-sm font-bold tracking-[0.25em] text-volt uppercase">// como funciona</h2>
+    <div class="mt-5 grid gap-4 sm:grid-cols-3">
       {
         [
           {
@@ -118,10 +124,10 @@ const jsonLd = [
             texto: 'O resgate é sempre no site ou app oficial da editora. Nunca pedimos sua senha nem seus dados de conta.',
           },
         ].map((passo, i) => (
-          <div class="rounded-lg border border-line bg-surface px-5 py-5">
-            <span class="font-mono text-sm text-ink-muted">0{i + 1}</span>
-            <h3 class="mt-2 text-base font-medium">{passo.titulo}</h3>
-            <p class="mt-1 text-sm leading-relaxed text-ink-muted">{passo.texto}</p>
+          <div class="cut border border-line bg-surface px-5 py-5">
+            <span class="font-mono text-sm font-bold text-volt">0{i + 1}</span>
+            <h3 class="mt-2 font-display text-base font-semibold tracking-wide uppercase">{passo.titulo}</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-ink-muted">{passo.texto}</p>
           </div>
         ))
       }
