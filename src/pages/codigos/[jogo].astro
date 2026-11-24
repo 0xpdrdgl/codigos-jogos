@@ -52,6 +52,25 @@ const jsonLd = [
       acceptedAnswer: { '@type': 'Answer', text: p.resposta },
     })),
   },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    url: new URL(`/codigos/${jogo.slug}/`, Astro.site).href,
+    inLanguage: 'pt-BR',
+    ...(atualizado ? { dateModified: atualizado } : {}),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    numberOfItems: ativos.length,
+    itemListElement: ativos.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.codigo,
+      url: new URL(`/codigos/${jogo.slug}/`, Astro.site).href,
+    })),
+  },
 ];
 ---
 

@@ -34,24 +34,43 @@ export interface ItemFonte {
 const UA = 'codigos-jogos/0.1 (+https://codigos-jogos.pages.dev)';
 const TIMEOUT_MS = 15_000;
 
+const JINA = 'https://r.jina.ai/';
+
 export async function coletar(fonte: Fonte): Promise<ItemFonte[]> {
   try {
     const resposta = await fetch(fonte.url, {
       headers: { 'user-agent': UA, accept: fonte.tipo === 'reddit' ? 'application/json' : 'application/rss+xml, application/xml, text/xml' },
       signal: AbortSignal.timeout(TIMEOUT_MS),
     });
-    if (!resposta.ok) {
-      console.warn(`fonte ${fonte.rotulo}: HTTP ${resposta.status}`);
+    if (resposta.ok) {
+      const corpo = await resposta.text();
+      if (fonte.tipo === 'reddit') return parseReddit(corpo);
+      if (fonte.tipo === 'rss') return parseRss(corpo);
+      if (fonte.tipo === 'hoyolab') return coletarHoyolab(corpo);
+      if (fonte.tipo === 'telegram') return parseTelegram(corpo, fonte);
+      return parseHtml(corpo, fonte);
+    }
+    console.warn(`fonte ${fonte.rotulo}: HTTP ${resposta.status} — tentando via jina.ai`);
+  } catch (erro) {
+    console.warn(`fonte ${fonte.rotulo}: ${erro instanceof Error ? erro.message : erro} — tentando via jina.ai`);
+  }
+
+  // Fallback: o leitor-proxy r.jina.ai devolve a página como texto limpo e
+  // contorna bloqueios de datacenter (Fandom/Reddit). O resultado é texto —
+  // tratado como uma página genérica (mesmo para fontes reddit/rss).
+  if (fonte.tipo === 'hoyolab') return [];
+  try {
+    const viaJina = await fetch(`${JINA}${fonte.url}`, {
+      headers: { 'user-agent': UA, accept: 'text/plain' },
+      signal: AbortSignal.timeout(30_000),
+    });
+    if (!viaJina.ok) {
+      console.warn(`fonte ${fonte.rotulo} via jina: HTTP ${viaJina.status}`);
       return [];
     }
-    const corpo = await resposta.text();
-    if (fonte.tipo === 'reddit') return parseReddit(corpo);
-    if (fonte.tipo === 'rss') return parseRss(corpo);
-    if (fonte.tipo === 'hoyolab') return coletarHoyolab(corpo);
-    if (fonte.tipo === 'telegram') return parseTelegram(corpo, fonte);
-    return parseHtml(corpo, fonte);
+    return parseHtml(await viaJina.text(), fonte);
   } catch (erro) {
-    console.warn(`fonte ${fonte.rotulo}: ${erro instanceof Error ? erro.message : erro}`);
+    console.warn(`fonte ${fonte.rotulo} via jina: ${erro instanceof Error ? erro.message : erro}`);
     return [];
   }
 }

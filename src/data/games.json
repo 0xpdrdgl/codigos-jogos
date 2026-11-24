@@ -37,6 +37,11 @@
           "tipo": "html",
           "url": "https://genshin-impact.fandom.com/wiki/Redemption_Code",
           "rotulo": "wiki da comunidade"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Genshin%20Impact%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -115,6 +120,11 @@
           "tipo": "html",
           "url": "https://honkai-star-rail.fandom.com/wiki/Redemption_Code",
           "rotulo": "wiki da comunidade"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Honkai:%20Star%20Rail%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -184,6 +194,11 @@
           "tipo": "html",
           "url": "https://zenless-zone-zero.fandom.com/wiki/Redemption_Code",
           "rotulo": "wiki da comunidade"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Zenless%20Zone%20Zero%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -250,6 +265,21 @@
           "tipo": "telegram",
           "url": "https://t.me/s/freefireredeemcodesdaily",
           "rotulo": "Telegram @freefireredeemcodesdaily"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Free%20Fire%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
+        },
+        {
+          "tipo": "telegram",
+          "url": "https://t.me/s/freefire_tg",
+          "rotulo": "Telegram @freefire_tg"
+        },
+        {
+          "tipo": "telegram",
+          "url": "https://t.me/s/redeemcode_2",
+          "rotulo": "Telegram @redeemcode_2"
         }
       ],
       "faq": [
@@ -320,6 +350,11 @@
           "tipo": "html",
           "url": "https://roblox.fandom.com/wiki/Promotional_code",
           "rotulo": "Fandom Roblox"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Roblox%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -385,6 +420,11 @@
           "tipo": "reddit",
           "url": "https://www.reddit.com/r/bloxfruits.json?limit=50",
           "rotulo": "r/bloxfruits"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Blox%20Fruits%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -424,6 +464,11 @@
           "tipo": "reddit",
           "url": "https://www.reddit.com/r/DressToImpressRoblox.json?limit=50",
           "rotulo": "r/DressToImpressRoblox"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Dress%20to%20Impress%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -463,6 +508,11 @@
           "tipo": "reddit",
           "url": "https://www.reddit.com/r/FischRoblox.json?limit=50",
           "rotulo": "r/FischRoblox"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Fisch%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -502,6 +552,11 @@
           "tipo": "reddit",
           "url": "https://www.reddit.com/r/AnimeDefenders.json?limit=50",
           "rotulo": "r/AnimeDefenders"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Anime%20Defenders%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -541,6 +596,11 @@
           "tipo": "reddit",
           "url": "https://www.reddit.com/r/JujutsuInfinite.json?limit=50",
           "rotulo": "r/JujutsuInfinite"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Jujutsu%20Infinite%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -580,6 +640,11 @@
           "tipo": "reddit",
           "url": "https://www.reddit.com/r/BladeBall.json?limit=50",
           "rotulo": "r/BladeBall"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Blade%20Ball%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -619,6 +684,11 @@
           "tipo": "reddit",
           "url": "https://www.reddit.com/r/KingLegacy.json?limit=50",
           "rotulo": "r/KingLegacy"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=King%20Legacy%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -658,6 +728,11 @@
           "tipo": "reddit",
           "url": "https://www.reddit.com/r/Shindo_Life.json?limit=50",
           "rotulo": "r/Shindo_Life"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Shindo%20Life%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -697,6 +772,11 @@
           "tipo": "reddit",
           "url": "https://www.reddit.com/r/type_soul.json?limit=50",
           "rotulo": "r/type_soul"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Type%20Soul%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -736,6 +816,11 @@
           "tipo": "reddit",
           "url": "https://www.reddit.com/r/BlueLockRivals.json?limit=50",
           "rotulo": "r/BlueLockRivals"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Blue%20Lock:%20Rivals%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -779,6 +864,11 @@
           "tipo": "html",
           "url": "https://honkaiimpact3.fandom.com/wiki/Exchange_Rewards",
           "rotulo": "Fandom HI3"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Honkai%20Impact%203rd%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -817,6 +907,11 @@
           "tipo": "html",
           "url": "https://wuthering-waves.fandom.com/wiki/Redemption_Code",
           "rotulo": "Fandom Wuthering Waves"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Wuthering%20Waves%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -855,6 +950,11 @@
           "tipo": "html",
           "url": "https://mobile-legends.fandom.com/wiki/Code_Redemption",
           "rotulo": "Fandom MLBB"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Mobile%20Legends:%20Bang%20Bang%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -898,6 +998,11 @@
           "tipo": "telegram",
           "url": "https://t.me/s/whiteoutsurvivalofficial",
           "rotulo": "Telegram @whiteoutsurvivalofficial"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Whiteout%20Survival%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -937,6 +1042,11 @@
           "tipo": "html",
           "url": "https://afk-arena.fandom.com/wiki/Redemption_Code",
           "rotulo": "Fandom AFK Arena"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=AFK%20Arena%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -976,6 +1086,11 @@
           "tipo": "html",
           "url": "https://cookierunkingdom.fandom.com/wiki/Redeem_Codes",
           "rotulo": "Fandom CRK"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Cookie%20Run:%20Kingdom%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -1014,6 +1129,11 @@
           "tipo": "html",
           "url": "https://pokemongo.fandom.com/wiki/List_of_promo_codes",
           "rotulo": "Fandom Pokémon GO"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Pokémon%20GO%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -1072,6 +1192,11 @@
           "tipo": "html",
           "url": "https://toweroffantasy.fandom.com/wiki/Codes",
           "rotulo": "Fandom Tower of Fantasy"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Tower%20of%20Fantasy%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -1111,6 +1236,11 @@
           "tipo": "html",
           "url": "https://solo-leveling-arise.fandom.com/wiki/Codes",
           "rotulo": "Fandom Solo Leveling Arise"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Solo%20Leveling:%20Arise%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -1149,6 +1279,11 @@
           "tipo": "html",
           "url": "https://nikke-goddess-of-victory-international.fandom.com/wiki/Codes",
           "rotulo": "Fandom Nikke"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Goddess%20of%20Victory:%20Nikke%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
@@ -1186,6 +1321,11 @@
           "tipo": "html",
           "url": "https://rocketleague.fandom.com/wiki/Redeem_code",
           "rotulo": "Fandom Rocket League"
+        },
+        {
+          "tipo": "rss",
+          "url": "https://news.google.com/rss/search?q=Rocket%20League%20codes&hl=pt-BR&gl=BR&ceid=BR%3Apt-419",
+          "rotulo": "Google News"
         }
       ],
       "faq": [
