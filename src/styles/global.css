@@ -1,0 +1,69 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens — minimalismo utilitário premium.
+ * Monocromia quente + pastéis dessaturados para significado semântico.
+ */
+@theme {
+  --color-canvas: #fbfbfa;
+  --color-surface: #ffffff;
+  --color-ink: #1a1a19;
+  --color-ink-muted: #787774;
+  --color-line: #eae9e6;
+
+  --color-ok-bg: #edf3ec;
+  --color-ok-fg: #346538;
+  --color-no-bg: #fdebec;
+  --color-no-fg: #9f2f2d;
+  --color-info-bg: #e1f3fe;
+  --color-info-fg: #1f6c9f;
+  --color-warn-bg: #fbf3db;
+  --color-warn-fg: #956400;
+
+  --font-display:
+    'Newsreader Variable', 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-body:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', 'Helvetica Neue', Arial,
+    sans-serif;
+  --font-mono:
+    ui-monospace, 'SF Mono', 'Cascadia Code', 'JetBrains Mono', Consolas, monospace;
+}
+
+/* Tipografia base */
+body {
+  font-feature-settings: 'kern';
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #e1f3fe;
+}
+
+/* Revelação sutil ao entrar na viewport — apenas com JS ativo,
+   para não esconder conteúdo quando o JS falha. */
+.js [data-revelar] {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.js [data-revelar].na-tela {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-revelar] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Link de salto e foco visível */
+:focus-visible {
+  outline: 2px solid #1a1a19;
+  outline-offset: 2px;
+}

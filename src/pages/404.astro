@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { jogos } from '../lib/games';
+---
+
+<BaseLayout title="Página não encontrada" canonical="/404">
+  <section class="mx-auto max-w-5xl px-6 pt-24 pb-16 text-center">
+    <h1 class="font-display text-5xl tracking-tight">404</h1>
+    <p class="mt-4 text-ink-muted">Esta página não existe — mas os códigos estão aqui:</p>
+    <ul class="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+      {
+        jogos.map((jogo) => (
+          <li>
+            <a href={`/codigos/${jogo.slug}/`} class="underline decoration-line underline-offset-4 hover:text-ink">
+              Códigos {jogo.nome}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

@@ -1,0 +1,37 @@
+---
+/**
+ * Anúncio retangular no meio do artigo.
+ * Reserva altura fixa para evitar CLS — mesma mecânica do AdBannerTop.
+ *
+ * Ative com as variáveis de ambiente do build:
+ *   PUBLIC_ADSENSE_CLIENT=ca-pub-XXXXXXXXXXXXXXXX
+ *   PUBLIC_ADSENSE_SLOT_ARTIGO=0987654321
+ */
+const client = import.meta.env.PUBLIC_ADSENSE_CLIENT;
+const slot = import.meta.env.PUBLIC_ADSENSE_SLOT_ARTIGO;
+const ativo = Boolean(client && slot);
+---
+
+{
+  ativo ? (
+    <div class="my-10 min-h-[250px] w-full">
+      <ins
+        class="adsbygoogle"
+        style="display: block"
+        data-ad-client={client}
+        data-ad-slot={slot}
+        data-ad-format="rectangle, horizontal"
+        data-full-width-responsive="true"
+      />
+      <script is:inline>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  ) : (
+    <div class="my-10 min-h-[250px] w-full" data-ad-slot="no-artigo" aria-hidden="true">
+      <div class="flex h-full min-h-[250px] items-center justify-center rounded-lg border border-dashed border-line py-6">
+        <span class="text-xs tracking-widest text-ink-muted uppercase">Espaço publicitário</span>
+      </div>
+    </div>
+  )
+}

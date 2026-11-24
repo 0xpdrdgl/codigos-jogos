@@ -1,0 +1,112 @@
+---
+import '@fontsource-variable/newsreader';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AdBannerTop from '../components/AdBannerTop.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Caminho canônico relativo à raiz do site (ex.: '/codigos/genshin-impact'). */
+  canonical?: string;
+  /** Objetos JSON-LD adicionais (FAQPage, BreadcrumbList, HowTo...). */
+  jsonLd?: unknown[];
+  ogType?: 'website' | 'article';
+}
+
+const SITE_NAME = 'Códigos Jogos';
+const {
+  title,
+  description = 'Códigos de resgate de jogos coletados automaticamente das fontes oficiais: Genshin Impact, Honkai: Star Rail, Zenless Zone Zero, Free Fire e mais.',
+  canonical = '/',
+  jsonLd = [],
+  ogType = 'website',
+} = Astro.props;
+
+const url = new URL(canonical, Astro.site);
+const tituloCompleto = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{tituloCompleto}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url.href} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={tituloCompleto} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url.href} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={tituloCompleto} />
+    <meta name="twitter:description" content={description} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {
+      adsenseClient && (
+        <script
+          is:inline
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+          crossorigin="anonymous"
+        />
+      )
+    }
+  </head>
+  <body class="bg-canvas text-ink font-body antialiased">
+    <a
+      href="#conteudo"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-white"
+    >Pular para o conteúdo</a>
+    <Header />
+    <AdBannerTop />
+    <main id="conteudo">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      // Revelação sutil ao entrar na viewport (transform/opacity apenas).
+      const observador = new IntersectionObserver(
+        (entradas) => {
+          for (const entrada of entradas) {
+            if (entrada.isIntersecting) {
+              entrada.target.classList.add('na-tela');
+              observador.unobserve(entrada.target);
+            }
+          }
+        },
+        { rootMargin: '0px 0px -8% 0px' },
+      );
+      for (const alvo of document.querySelectorAll('[data-revelar]')) {
+        observador.observe(alvo);
+      }
+      // Copiar código para a área de transferência nos botões [data-codigo].
+      for (const botao of document.querySelectorAll('[data-codigo]')) {
+        botao.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(botao.getAttribute('data-codigo') ?? '');
+            botao.setAttribute('data-copiado', 'true');
+            const rotulo = botao.querySelector('[data-rotulo]');
+            if (rotulo) rotulo.textContent = 'copiado!';
+            setTimeout(() => {
+              botao.removeAttribute('data-copiado');
+              if (rotulo) rotulo.textContent = 'copiar';
+            }, 1500);
+          } catch {
+            // clipboard indisponível (HTTP local): seleção manual continua valendo
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

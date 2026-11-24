@@ -1,0 +1,52 @@
+---
+import type { Codigo } from '../lib/types';
+
+interface Props {
+  codigo: Codigo;
+  expirado?: boolean;
+}
+
+const { codigo, expirado = false } = Astro.props;
+const data = new Date(codigo.ultimaVerificacao).toLocaleDateString('pt-BR', {
+  day: 'numeric',
+  month: 'short',
+});
+---
+
+<div
+  class:list={[
+    'flex flex-wrap items-center justify-between gap-3 rounded-lg border bg-surface px-4 py-3',
+    expirado ? 'border-line opacity-60' : 'border-line',
+  ]}
+>
+  <div class="flex items-center gap-3">
+    <code
+      class:list={[
+        'rounded bg-canvas px-2.5 py-1 font-mono text-sm tracking-wider',
+        expirado && 'line-through',
+      ]}
+    >{codigo.codigo}</code>
+    {
+      expirado ? (
+        <span class="rounded-full bg-no-bg px-2 py-0.5 text-xs font-medium text-no-fg">expirado</span>
+      ) : (
+        <span class="rounded-full bg-ok-bg px-2 py-0.5 text-xs font-medium text-ok-fg">ativo</span>
+      )
+    }
+  </div>
+  <div class="flex items-center gap-4 text-sm text-ink-muted">
+    {codigo.recompensa && <span>{codigo.recompensa}</span>}
+    <span class="text-xs">verificado em {data}</span>
+    {
+      !expirado && (
+        <button
+          type="button"
+          data-codigo={codigo.codigo}
+          class="rounded-md border border-line px-2.5 py-1 text-xs font-medium transition-colors hover:border-ink-muted"
+        >
+          <span data-rotulo>copiar</span>
+        </button>
+      )
+    }
+  </div>
+</div>

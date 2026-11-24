@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<BaseLayout
+  title="Política de privacidade"
+  description="Como este site trata dados, cookies de anúncio e analíticos."
+  canonical="/politica-de-privacidade/"
+>
+  <article class="mx-auto max-w-3xl px-6 pt-10">
+    <Breadcrumbs itens={[{ nome: 'Política de privacidade', href: '/politica-de-privacidade/' }]} />
+
+    <h1 class="mt-6 font-display text-4xl tracking-tight" data-revelar>Política de privacidade</h1>
+
+    <div class="mt-8 space-y-8 text-sm leading-relaxed text-ink-muted">
+      <section data-revelar>
+        <h2 class="font-display text-2xl tracking-tight text-ink">Dados que coletamos</h2>
+        <p class="mt-3">
+          Não coletamos dados pessoais diretamente: não há cadastro, formulário ou
+          login. A navegação é medida por analíticos agregados (Cloudflare Web
+          Analytics), que não usam cookies nem rastreiam visitantes
+          individualmente.
+        </p>
+      </section>
+
+      <section data-revelar>
+        <h2 class="font-display text-2xl tracking-tight text-ink">Anúncios e cookies</h2>
+        <p class="mt-3">
+          Este site pode exibir anúncios do Google AdSense. O Google usa cookies e
+          identificadores para medir e personalizar anúncios conforme as suas
+          configurações — você pode gerenciar essa personalização nas
+          configurações de anúncios do Google ou por meio da sua conta Google.
+        </p>
+      </section>
+
+      <section data-revelar>
+        <h2 class="font-display text-2xl tracking-tight text-ink">Links externos</h2>
+        <p class="mt-3">
+          Os botões de resgate levam a sites oficiais das editoras, que têm
+          políticas de privacidade próprias. Recomendamos lê-las antes de fazer
+          login.
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { jogos } from '../lib/games';
+---
+
+<BaseLayout
+  title="Sobre e fontes"
+  description="Como este site coleta e verifica códigos de resgate de jogos, quais fontes são monitoradas e o que fazer (e não fazer) com eles."
+  canonical="/sobre/"
+>
+  <article class="mx-auto max-w-3xl px-6 pt-10">
+    <Breadcrumbs itens={[{ nome: 'Sobre', href: '/sobre/' }]} />
+
+    <h1 class="mt-6 font-display text-4xl tracking-tight" data-revelar>Sobre</h1>
+
+    <div class="mt-8 space-y-8 text-sm leading-relaxed text-ink-muted">
+      <section data-revelar>
+        <h2 class="font-display text-2xl tracking-tight text-ink">O que é este site</h2>
+        <p class="mt-3">
+          Um agregador de códigos de resgate de jogos. Coletores automáticos leem as
+          fontes oficiais e comunidades de cada jogo de hora em hora; cada código
+          detectado passa por revisão manual antes de entrar na lista, junto com a
+          data da última verificação.
+        </p>
+      </section>
+
+      <section data-revelar>
+        <h2 class="font-display text-2xl tracking-tight text-ink">Fontes monitoradas</h2>
+        <ul class="mt-3 list-disc space-y-1 pl-6">
+          {
+            jogos.map((jogo) => (
+              <li>
+                <strong class="font-medium text-ink">{jogo.nome}:</strong>{' '}
+                {jogo.fontes.map((f) => f.rotulo).join(', ')}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section data-revelar>
+        <h2 class="font-display text-2xl tracking-tight text-ink">Aviso importante</h2>
+        <p class="mt-3">
+          O resgate de códigos acontece sempre nos sites e aplicativos oficiais das
+          editoras. Este site não é afiliado a HoYoverse, Garena ou qualquer outra
+          editora; nomes e marcas pertencem aos seus detentores. Nunca insira seu
+          login ou senha de jogo em páginas de terceiros.
+        </p>
+      </section>
+
+      <section data-revelar>
+        <h2 class="font-display text-2xl tracking-tight text-ink">Achou um código que não está aqui?</h2>
+        <p class="mt-3">
+          A lista é atualizada de hora em hora, mas códigos de livestream expiram em
+          horas — se um código sumiu, provavelmente venceu. Veja a aba de expirados
+          da página do jogo para confirmar.
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CodeCard from '../../components/CodeCard.astro';
+import Faq from '../../components/Faq.astro';
+import AdInArticle from '../../components/AdInArticle.astro';
+import { jogos } from '../../lib/games';
+import { doJogo, atualizadoEm } from '../../lib/codes';
+import { dataCurta, dataLonga } from '../../lib/dates';
+import type { Jogo } from '../../lib/types';
+
+export function getStaticPaths() {
+  return jogos.map((jogo) => ({ params: { jogo: jogo.slug }, props: { jogo } }));
+}
+
+interface Props {
+  jogo: Jogo;
+}
+
+const { jogo } = Astro.props;
+const { ativos, expirados } = doJogo(jogo.slug);
+const atualizado = atualizadoEm(jogo.slug);
+const hoje = dataCurta();
+const outrosJogos = jogos.filter((j) => j.slug !== jogo.slug);
+
+const title =
+  ativos.length > 0
+    ? `Códigos ${jogo.nome} hoje (${hoje}): ${ativos.length} ativo${ativos.length > 1 ? 's' : ''}`
+    : `Códigos ${jogo.nome} hoje (${hoje}): lista completa`;
+const description = `Códigos de ${jogo.nome} ativos${
+  atualizado ? `, verificados em ${dataLonga(atualizado)}` : ''
+}: ${ativos.length} ativo${ativos.length !== 1 ? 's' : ''} e ${expirados.length} expirado${
+  expirados.length !== 1 ? 's' : ''
+}. Resgate oficial e passo a passo completo.`;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: new URL('/', Astro.site).href },
+      { '@type': 'ListItem', position: 2, name: 'Códigos', item: new URL('/codigos/', Astro.site).href },
+      { '@type': 'ListItem', position: 3, name: jogo.nome, item: new URL(`/codigos/${jogo.slug}/`, Astro.site).href },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: jogo.faq.map((p) => ({
+      '@type': 'Question',
+      name: p.pergunta,
+      acceptedAnswer: { '@type': 'Answer', text: p.resposta },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonical={`/codigos/${jogo.slug}/`} jsonLd={jsonLd}>
+  <article class="mx-auto max-w-5xl px-6 pt-10">
+    <Breadcrumbs itens={[{ nome: 'Códigos', href: '/codigos/' }, { nome: jogo.nome, href: `/codigos/${jogo.slug}/` }]} />
+
+    <header class="mt-6" data-revelar>
+      <h1 class="font-display text-4xl tracking-tight">Códigos de {jogo.nome}</h1>
+      <p class="mt-3 max-w-2xl text-ink-muted">
+        {ativos.length} código{ativos.length !== 1 ? 's' : ''} ativo{ativos.length !== 1 ? 's' : ''}
+        {atualizado && <> · última verificação em {dataLonga(atualizado)}</>}.
+        Códigos de {jogo.nome} têm formato {jogo.palavrasFormato}.
+      </p>
+    </header>
+
+    <section class="mt-8" aria-label="Códigos ativos" data-revelar>
+      <h2 class="font-display text-2xl tracking-tight">Ativos</h2>
+      <div class="mt-4 space-y-3">
+        {
+          ativos.length === 0 ? (
+            <p class="rounded-lg border border-dashed border-line px-4 py-6 text-center text-sm text-ink-muted">
+              Nenhum código ativo no momento — códigos novos entram aqui assim que
+              passam pela revisão. Enquanto isso, veja o
+              <a class="underline decoration-line underline-offset-4" href={`/codigos/${jogo.slug}/como-resgatar/`}>tutorial de resgate</a>
+              para estar pronto quando sair.
+            </p>
+          ) : (
+            ativos.map((codigo) => <CodeCard codigo={codigo} />)
+          )
+        }
+      </div>
+    </section>
+
+    <AdInArticle />
+
+    <section aria-label="Como resgatar" data-revelar>
+      <h2 class="font-display text-2xl tracking-tight">Como resgatar em {jogo.nome}</h2>
+      <ol class="mt-4 list-decimal space-y-2 pl-6 text-sm leading-relaxed text-ink-muted">
+        {jogo.passosResgate.map((passo) => <li>{passo}</li>)}
+      </ol>
+      <p class="mt-4 text-sm">
+        <a
+          href={`/codigos/${jogo.slug}/como-resgatar/`}
+          class="underline decoration-line underline-offset-4 hover:text-ink"
+        >Tutorial completo de resgate</a>
+        <span class="mx-2 text-line">·</span>
+        <a
+          href={jogo.resgateOficial}
+          rel="nofollow noopener noreferrer"
+          class="underline decoration-line underline-offset-4 hover:text-ink"
+        >Página oficial de resgate</a>
+      </p>
+    </section>
+
+    {
+      expirados.length > 0 && (
+        <section class="mt-12" aria-label="Códigos expirados" data-revelar>
+          <h2 class="font-display text-2xl tracking-tight">Expirados recentemente</h2>
+          <p class="mt-2 text-sm text-ink-muted">
+            Guardamos o histórico para você conferir se um código que achou por aí já venceu.
+          </p>
+          <div class="mt-4 space-y-3">
+            {expirados.slice(0, 10).map((codigo) => <CodeCard codigo={codigo} expirado />)}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="mt-12" aria-label="Perguntas frequentes" data-revelar>
+      <h2 class="font-display text-2xl tracking-tight">Perguntas frequentes</h2>
+      <div class="mt-4">
+        <Faq perguntas={jogo.faq} />
+      </div>
+    </section>
+
+    <section class="mt-12" aria-label="Outros jogos" data-revelar>
+      <h2 class="font-display text-2xl tracking-tight">Outros jogos</h2>
+      <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        {
+          outrosJogos.map((j) => (
+            <li>
+              <a href={`/codigos/${j.slug}/`} class="underline decoration-line underline-offset-4 hover:text-ink">
+                Códigos {j.nome}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </article>
+</BaseLayout>

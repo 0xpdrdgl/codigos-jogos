@@ -1,0 +1,33 @@
+---
+import { atualizadoEm } from '../lib/codes';
+import { jogos } from '../lib/games';
+const ano = new Date().getFullYear();
+const atualizado = atualizadoEm();
+const dataAtualizado = atualizado
+  ? new Date(atualizado).toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' })
+  : undefined;
+---
+
+<footer class="mt-24 border-t border-line">
+  <div class="mx-auto max-w-5xl px-6 py-12 text-sm text-ink-muted">
+    <p class="max-w-3xl leading-relaxed">
+      Códigos coletados automaticamente das fontes oficiais e comunidades dos jogos,
+      revisados manualmente antes de entrar na lista. Os resgates acontecem sempre nos
+      sites e aplicativos oficiais das editoras — nunca digite sua senha de jogo em
+      páginas de terceiros.
+    </p>
+    <p class="mt-4">
+      {jogos.length} jogos monitorados{dataAtualizado ? ` · base atualizada em ${dataAtualizado}` : ''}.
+    </p>
+    <nav aria-label="Rodapé" class="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+      <a class="underline decoration-line underline-offset-4 hover:text-ink" href="/">Início</a>
+      <a class="underline decoration-line underline-offset-4 hover:text-ink" href="/codigos/">Todos os jogos</a>
+      <a class="underline decoration-line underline-offset-4 hover:text-ink" href="/sobre/">Sobre e fontes</a>
+      <a class="underline decoration-line underline-offset-4 hover:text-ink" href="/politica-de-privacidade/">Política de privacidade</a>
+    </nav>
+    <p class="mt-6 text-xs">
+      © {ano} Códigos Jogos. Site de fãs, sem afiliação com HoYoverse, Garena ou
+      qualquer editora. Marcas e nomes de jogos pertencem aos seus detentores.
+    </p>
+  </div>
+</footer>
