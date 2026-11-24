@@ -1,0 +1,36 @@
+name: Coleta de códigos
+
+# Lê as fontes de cada jogo a cada 30 min e abre candidatos em pending.json.
+# Os segredos do Telegram ficam em Settings → Secrets; sem eles, a coleta só
+# registra os candidatos para aprovação manual (`npm run approve -- --list`).
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_APPROVAL_CHAT_ID: ${{ secrets.TELEGRAM_APPROVAL_CHAT_ID }}
+      LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+      LLM_MODEL: ${{ vars.LLM_MODEL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run collect
+      - name: Salva candidatos novos
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'data: novos candidatos de código coletados'
+          file_pattern: 'src/data/pending.json'

@@ -1,0 +1,12 @@
+# Códigos Jogos
+
+> Site estático que reúne códigos de resgate de jogos (Genshin Impact,
+> Honkai: Star Rail, Zenless Zone Zero, Free Fire), coletados automaticamente
+> das fontes oficiais e comunidades. Cada página de jogo lista códigos ativos,
+> expirados e o passo a passo do resgate oficial.
+
+## Estrutura
+
+- / — hub com os jogos monitorados e contagem de códigos ativos
+- /codigos/{slug}/ — códigos ativos e expirados do jogo
+- /codigos/{slug}/como-resgatar/ — tutorial de resgate com link oficial
