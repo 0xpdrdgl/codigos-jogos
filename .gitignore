@@ -1,0 +1,14 @@
+node_modules/
+dist/
+build/
+.astro/
+.next/
+coverage/
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+
+# Gerado pelo seed a cada build — não commitar.
+src/data/meta.json

@@ -1,0 +1,8 @@
+services:
+  site:
+    build: .
+    ports:
+      - "8080:80"
+# `docker compose up` sobe o site estático compilado em http://localhost:8080.
+# Nenhuma dependência de servidor em runtime: o container apenas entrega os
+# arquivos gerados no build.

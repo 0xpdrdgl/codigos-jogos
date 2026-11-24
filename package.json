@@ -1,0 +1,40 @@
+{
+  "name": "codigos-jogos",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Códigos de resgate de jogos (Genshin, Honkai, Free Fire...) coletados automaticamente das fontes oficiais — site estático de programmatic SEO em Astro.",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "npm run seed && astro build",
+    "preview": "astro preview",
+    "deploy": "npm run build && npx wrangler pages deploy dist --project-name=codigos-jogos --branch=main --commit-dirty=true",
+    "indexnow": "tsx scripts/indexnow.ts",
+    "seed": "tsx scripts/seed-data.ts",
+    "collect": "tsx scripts/collect.ts",
+    "approve": "tsx scripts/approve.ts",
+    "publish": "tsx scripts/publish.ts",
+    "test": "node --import tsx --test \"src/**/*.test.ts\"",
+    "lint": "eslint .",
+    "typecheck": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.6",
+    "@fontsource-variable/newsreader": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.13"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.15.0",
+    "prettier": "^3.10.1",
+    "tailwindcss": "^4.3.5",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.74.0"
+  }
+}

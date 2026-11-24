@@ -1,0 +1,125 @@
+{
+  "jogos": [
+    {
+      "id": "genshin-impact",
+      "nome": "Genshin Impact",
+      "slug": "genshin-impact",
+      "editora": "HoYoverse",
+      "oficial": "https://genshin.hoyoverse.com/pt/",
+      "resgateOficial": "https://genshin.hoyoverse.com/en/gift",
+      "resgateInGame": false,
+      "formatoCodigo": "[A-Z0-9]{12,16}",
+      "palavrasFormato": "12 a 16 letras maiúsculas e números, sem espaços",
+      "passosResgate": [
+        "Abra a página oficial de resgate (genshin.hoyoverse.com/en/gift) ou cole o link na barra de endereço.",
+        "Faça login com a conta HoYoverse que você usa no jogo.",
+        "Confira se o servidor (América, Europa, Ásia ou TW/HK/MO) está correto — o resgate é por servidor.",
+        "Cole o código no campo de resgate e confirme.",
+        "As recompensas chegam no correio do jogo em alguns minutos; é preciso estar no Rank de Aventura 10 ou mais."
+      ],
+      "fontes": [
+        { "tipo": "reddit", "url": "https://www.reddit.com/r/Genshin_Impact.json?limit=50", "rotulo": "r/Genshin_Impact" },
+        { "tipo": "reddit", "url": "https://www.reddit.com/r/Genshin_Impact/search.json?q=code&restrict_sr=1&sort=new&t=week&limit=50", "rotulo": "busca code em r/Genshin_Impact" }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde entra o código do Genshin Impact?",
+          "resposta": "Na página oficial de resgate da HoYoverse (genshin.hoyoverse.com/en/gift), com a conta logada e o servidor correto. A recompensa chega pelo correio do jogo e exige Rank de Aventura 10+."
+        },
+        {
+          "pergunta": "Por que o código do Genshin não funciona?",
+          "resposta": "Os motivos mais comuns são código expirado, servidor errado, código já resgatado na conta ou Rank de Aventura abaixo de 10. Códigos de livestream costumam durar menos de 24 horas."
+        },
+        {
+          "pergunta": "Quanto tempo dura um código de livestream?",
+          "resposta": "Códigos divulgados nas transmissões de versão normalmente expiram em 16 a 24 horas. Resgate no mesmo dia."
+        }
+      ]
+    },
+    {
+      "id": "honkai-star-rail",
+      "nome": "Honkai: Star Rail",
+      "slug": "honkai-star-rail",
+      "editora": "HoYoverse",
+      "oficial": "https://hsr.hoyoverse.com/pt-br/",
+      "resgateOficial": "https://hsr.hoyoverse.com/gift",
+      "resgateInGame": true,
+      "formatoCodigo": "[A-Z0-9]{12,16}",
+      "palavrasFormato": "12 a 16 letras maiúsculas e números, sem espaços",
+      "passosResgate": [
+        "Opção 1 — no jogo: abra o menu do celular (canto superior esquerdo), toque nos três pontos ao lado do nome do Desbravador e escolha \"Código de resgate\".",
+        "Opção 2 — no site: acesse hsr.hoyoverse.com/gift, faça login, selecione o servidor e cole o código.",
+        "As recompensas chegam no correio do jogo; é preciso desbloquear a caixa de correio concluindo o tutorial inicial."
+      ],
+      "fontes": [
+        { "tipo": "reddit", "url": "https://www.reddit.com/r/HonkaiStarRail.json?limit=50", "rotulo": "r/HonkaiStarRail" },
+        { "tipo": "reddit", "url": "https://www.reddit.com/r/HonkaiStarRail/search.json?q=code&restrict_sr=1&sort=new&t=week&limit=50", "rotulo": "busca code em r/HonkaiStarRail" }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde entra o código do Honkai: Star Rail?",
+          "resposta": "Dentro do jogo, no menu do celular (três pontos ao lado do nome do Desbravador, opção \"Código de resgate\"), ou no site oficial hsr.hoyoverse.com/gift com a conta logada."
+        },
+        {
+          "pergunta": "Por que o código do Star Rail não funciona?",
+          "resposta": "Geralmente é código expirado, já resgatado na conta ou servidor errado. Códigos de livestream duram cerca de um dia."
+        }
+      ]
+    },
+    {
+      "id": "zenless-zone-zero",
+      "nome": "Zenless Zone Zero",
+      "slug": "zenless-zone-zero",
+      "editora": "HoYoverse",
+      "oficial": "https://zenless.hoyoverse.com/pt/",
+      "resgateOficial": "https://zenless.hoyoverse.com/redemption",
+      "resgateInGame": true,
+      "formatoCodigo": "[A-Z0-9]{12,16}",
+      "palavrasFormato": "12 a 16 letras maiúsculas e números, sem espaços",
+      "passosResgate": [
+        "No jogo: abra o menu principal e vá em Mais → Códigos de resgate.",
+        "Pelo site: acesse zenless.hoyoverse.com/redemption, faça login e cole o código.",
+        "As recompensas chegam no correio do jogo em poucos minutos."
+      ],
+      "fontes": [
+        { "tipo": "reddit", "url": "https://www.reddit.com/r/ZZZ_Official.json?limit=50", "rotulo": "r/ZZZ_Official" }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde entra o código do Zenless Zone Zero?",
+          "resposta": "No menu do jogo (Mais → Códigos de resgate) ou no site zenless.hoyoverse.com/redemption com a conta logada."
+        }
+      ]
+    },
+    {
+      "id": "free-fire",
+      "nome": "Free Fire",
+      "slug": "free-fire",
+      "editora": "Garena",
+      "oficial": "https://freefiremobile.com.br/",
+      "resgateOficial": "https://reward.ff.garena.com/pt",
+      "resgateInGame": false,
+      "formatoCodigo": "[A-Z0-9]{12,16}",
+      "palavrasFormato": "12 a 16 letras maiúsculas e números, sem espaços",
+      "passosResgate": [
+        "Acesse o site oficial de recompensas (reward.ff.garena.com/pt).",
+        "Faça login com a conta vinculada ao jogo (Facebook, Google, VK ou ID do jogador).",
+        "Cole o código no campo de resgate e confirme.",
+        "Os itens chegam na aba de colecionáveis ou no cofre do jogo em até alguns minutos."
+      ],
+      "fontes": [
+        { "tipo": "reddit", "url": "https://www.reddit.com/r/freefire.json?limit=50", "rotulo": "r/freefire" }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código do Free Fire?",
+          "resposta": "Só no site oficial reward.ff.garena.com/pt, com a conta vinculada ao jogo. Desconfie de qualquer outro site que peça login do Free Fire."
+        },
+        {
+          "pergunta": "O código do Free Fire funciona em qualquer região?",
+          "resposta": "Nem sempre. Muitos códigos são regionais (Brasil, Indonésia, Índia) e só resgatam na região correspondente."
+        }
+      ]
+    }
+  ]
+}
