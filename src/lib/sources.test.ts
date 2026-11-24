@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { parseReddit, parseRss, parseHtml, extrairTextoPost } from './sources';
+import { parseReddit, parseRss, parseHtml, parseTelegram, extrairTextoPost } from './sources';
 
 test('parseReddit extrai título, texto e permalink dos posts', () => {
   const json = JSON.stringify({
@@ -42,16 +42,43 @@ test('parseRss decodifica entidades e CDATA', () => {
   assert.equal(parseRss(rss)[0].titulo, 'A & B');
 });
 
-test('parseHtml corta na seção de expirados e estabiliza o itemId', () => {
+test('parseHtml separa ativos de expirados e estabiliza o itemId', () => {
   const fonte = { tipo: 'html' as const, url: 'https://wiki.ex.com/codes', rotulo: 'wiki' };
   const html1 = '<html><body><table><tr><td>code LA54C77THS99 active</td></tr></table><h2>Expired codes</h2><p>OLD1CODE12</p></body></html>';
-  const item1 = parseHtml(html1, fonte);
-  assert.ok(item1.texto.includes('LA54C77THS99'));
-  assert.ok(!item1.texto.includes('OLD1CODE12'));
-  const item2 = parseHtml(html1, fonte);
-  assert.equal(item1.itemId, item2.itemId); // mesmo conteúdo = mesmo itemId
-  const item3 = parseHtml(html1.replace('LA54C77THS99', 'NEWINCOME1234'), fonte);
-  assert.notEqual(item1.itemId, item3.itemId); // conteúdo novo = item novo
+  const itens1 = parseHtml(html1, fonte);
+  assert.equal(itens1.length, 2);
+  const [ativo, morto] = itens1;
+  assert.ok(ativo.texto.includes('LA54C77THS99'));
+  assert.ok(!ativo.texto.includes('OLD1CODE12'));
+  assert.ok(morto.expirado);
+  assert.ok(morto.texto.includes('OLD1CODE12'));
+  assert.equal(parseHtml(html1, fonte)[0].itemId, ativo.itemId); // mesmo conteúdo = mesmo itemId
+  const item3 = parseHtml(html1.replace('LA54C77THS99', 'NEWINCOME1234'), fonte)[0];
+  assert.notEqual(ativo.itemId, item3.itemId); // conteúdo novo = item novo
+});
+
+test('parseHtml sem seção de expirados devolve item único', () => {
+  const fonte = { tipo: 'html' as const, url: 'https://wiki.ex.com/codes', rotulo: 'wiki' };
+  const itens = parseHtml('<html><body><p>code LA54C77THS99 active</p></body></html>', fonte);
+  assert.equal(itens.length, 1);
+  assert.ok(!itens[0].expirado);
+});
+
+test('parseTelegram extrai mensagens do preview público', () => {
+  const fonte = { tipo: 'telegram' as const, url: 'https://t.me/s/canal', rotulo: 'Telegram @canal' };
+  const html = `<main>
+    <div class="tgme_widget_message text_not_supported_wrap js-widget_message" data-post="canal/10">
+      <div class="tgme_widget_message_text js-message_text" dir="auto">CODE : LA54C77THS99<br>resgate já</div>
+    </div>
+    <div class="tgme_widget_message js-widget_message" data-post="canal/11">
+      <div class="tgme_widget_message_text js-message_text" dir="auto"></div>
+    </div>
+  </main>`;
+  const itens = parseTelegram(html, fonte);
+  assert.equal(itens.length, 1);
+  assert.equal(itens[0].itemId, 'canal/10');
+  assert.equal(itens[0].url, 'https://t.me/canal/10');
+  assert.ok(itens[0].texto.includes('LA54C77THS99'));
 });
 
 test('extrairTextoPost lê o delta Quill do structured_content', () => {

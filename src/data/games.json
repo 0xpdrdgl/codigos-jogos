@@ -240,6 +240,16 @@
           "tipo": "reddit",
           "url": "https://www.reddit.com/r/freefire.json?limit=50",
           "rotulo": "r/freefire"
+        },
+        {
+          "tipo": "telegram",
+          "url": "https://t.me/s/freefireredeemff",
+          "rotulo": "Telegram @freefireredeemff"
+        },
+        {
+          "tipo": "telegram",
+          "url": "https://t.me/s/freefireredeemcodesdaily",
+          "rotulo": "Telegram @freefireredeemcodesdaily"
         }
       ],
       "faq": [
@@ -305,6 +315,11 @@
           "tipo": "reddit",
           "url": "https://www.reddit.com/r/roblox.json?limit=50",
           "rotulo": "r/roblox"
+        },
+        {
+          "tipo": "html",
+          "url": "https://roblox.fandom.com/wiki/Promotional_code",
+          "rotulo": "Fandom Roblox"
         }
       ],
       "faq": [
@@ -343,6 +358,847 @@
           }
         ]
       }
+    },
+    {
+      "id": "blox-fruits",
+      "nome": "Blox Fruits",
+      "slug": "blox-fruits",
+      "editora": "Roblox",
+      "oficial": "https://blox-fruits.fandom.com/wiki/Codes",
+      "resgateOficial": "https://www.roblox.com/discover/",
+      "resgateInGame": true,
+      "formatoCodigo": "[A-Za-z0-9_]{4,24}",
+      "permiteMinusculas": true,
+      "palavrasFormato": "palavras e siglas com letras maiúsculas e minúsculas, às vezes com sublinhado (ex.: Sub2Gamer)",
+      "passosResgate": [
+        "Abra Blox Fruits no Roblox.",
+        "Procure o botão de códigos (ícone do Twitter/pássaro, engrenagem ou menu).",
+        "Cole o código exatamente como está — maiúsculas e minúsculas importam — e confirme."
+      ],
+      "fontes": [
+        {
+          "tipo": "html",
+          "url": "https://blox-fruits.fandom.com/wiki/Codes",
+          "rotulo": "Fandom Blox Fruits"
+        },
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/bloxfruits.json?limit=50",
+          "rotulo": "r/bloxfruits"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Blox Fruits?",
+          "resposta": "Dentro do jogo, pelo botão de códigos (ícone do Twitter ou menu de configurações)."
+        },
+        {
+          "pergunta": "Por que o código de Blox Fruits não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ]
+    },
+    {
+      "id": "dress-to-impress",
+      "nome": "Dress to Impress",
+      "slug": "dress-to-impress",
+      "editora": "Roblox",
+      "oficial": "https://dress-to-impress.fandom.com/wiki/Codes",
+      "resgateOficial": "https://www.roblox.com/discover/",
+      "resgateInGame": true,
+      "formatoCodigo": "[A-Za-z0-9_]{4,24}",
+      "permiteMinusculas": true,
+      "palavrasFormato": "palavras e siglas com letras maiúsculas e minúsculas, às vezes com sublinhado (ex.: Sub2Gamer)",
+      "passosResgate": [
+        "Abra Dress to Impress no Roblox.",
+        "Procure o botão de códigos (ícone do Twitter/pássaro, engrenagem ou menu).",
+        "Cole o código exatamente como está — maiúsculas e minúsculas importam — e confirme."
+      ],
+      "fontes": [
+        {
+          "tipo": "html",
+          "url": "https://dress-to-impress.fandom.com/wiki/Codes",
+          "rotulo": "Fandom DTI"
+        },
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox.json?limit=50",
+          "rotulo": "r/DressToImpressRoblox"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Dress to Impress?",
+          "resposta": "Dentro do jogo, pelo botão de códigos (ícone do Twitter ou menu de configurações)."
+        },
+        {
+          "pergunta": "Por que o código de Dress to Impress não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ]
+    },
+    {
+      "id": "fisch",
+      "nome": "Fisch",
+      "slug": "fisch",
+      "editora": "Roblox",
+      "oficial": "https://fischipedia.org/wiki/Codes",
+      "resgateOficial": "https://www.roblox.com/discover/",
+      "resgateInGame": true,
+      "formatoCodigo": "[A-Za-z0-9_]{4,24}",
+      "permiteMinusculas": true,
+      "palavrasFormato": "palavras e siglas com letras maiúsculas e minúsculas, às vezes com sublinhado (ex.: Sub2Gamer)",
+      "passosResgate": [
+        "Abra Fisch no Roblox.",
+        "Procure o botão de códigos (ícone do Twitter/pássaro, engrenagem ou menu).",
+        "Cole o código exatamente como está — maiúsculas e minúsculas importam — e confirme."
+      ],
+      "fontes": [
+        {
+          "tipo": "html",
+          "url": "https://fischipedia.org/wiki/Codes",
+          "rotulo": "Wiki oficial Fisch"
+        },
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/FischRoblox.json?limit=50",
+          "rotulo": "r/FischRoblox"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Fisch?",
+          "resposta": "Dentro do jogo, pelo botão de códigos (ícone do Twitter ou menu de configurações)."
+        },
+        {
+          "pergunta": "Por que o código de Fisch não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ]
+    },
+    {
+      "id": "anime-defenders",
+      "nome": "Anime Defenders",
+      "slug": "anime-defenders",
+      "editora": "Roblox",
+      "oficial": "https://anime-defenders.fandom.com/wiki/Codes",
+      "resgateOficial": "https://www.roblox.com/discover/",
+      "resgateInGame": true,
+      "formatoCodigo": "[A-Za-z0-9_]{4,24}",
+      "permiteMinusculas": true,
+      "palavrasFormato": "palavras e siglas com letras maiúsculas e minúsculas, às vezes com sublinhado (ex.: Sub2Gamer)",
+      "passosResgate": [
+        "Abra Anime Defenders no Roblox.",
+        "Procure o botão de códigos (ícone do Twitter/pássaro, engrenagem ou menu).",
+        "Cole o código exatamente como está — maiúsculas e minúsculas importam — e confirme."
+      ],
+      "fontes": [
+        {
+          "tipo": "html",
+          "url": "https://anime-defenders.fandom.com/wiki/Codes",
+          "rotulo": "Fandom Anime Defenders"
+        },
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/AnimeDefenders.json?limit=50",
+          "rotulo": "r/AnimeDefenders"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Anime Defenders?",
+          "resposta": "Dentro do jogo, pelo botão de códigos (ícone do Twitter ou menu de configurações)."
+        },
+        {
+          "pergunta": "Por que o código de Anime Defenders não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ]
+    },
+    {
+      "id": "jujutsu-infinite",
+      "nome": "Jujutsu Infinite",
+      "slug": "jujutsu-infinite",
+      "editora": "Roblox",
+      "oficial": "https://jujutsu-infinite.fandom.com/wiki/Codes",
+      "resgateOficial": "https://www.roblox.com/discover/",
+      "resgateInGame": true,
+      "formatoCodigo": "[A-Za-z0-9_]{4,24}",
+      "permiteMinusculas": true,
+      "palavrasFormato": "palavras e siglas com letras maiúsculas e minúsculas, às vezes com sublinhado (ex.: Sub2Gamer)",
+      "passosResgate": [
+        "Abra Jujutsu Infinite no Roblox.",
+        "Procure o botão de códigos (ícone do Twitter/pássaro, engrenagem ou menu).",
+        "Cole o código exatamente como está — maiúsculas e minúsculas importam — e confirme."
+      ],
+      "fontes": [
+        {
+          "tipo": "html",
+          "url": "https://jujutsu-infinite.fandom.com/wiki/Codes",
+          "rotulo": "Fandom Jujutsu Infinite"
+        },
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/JujutsuInfinite.json?limit=50",
+          "rotulo": "r/JujutsuInfinite"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Jujutsu Infinite?",
+          "resposta": "Dentro do jogo, pelo botão de códigos (ícone do Twitter ou menu de configurações)."
+        },
+        {
+          "pergunta": "Por que o código de Jujutsu Infinite não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ]
+    },
+    {
+      "id": "blade-ball",
+      "nome": "Blade Ball",
+      "slug": "blade-ball",
+      "editora": "Roblox",
+      "oficial": "https://blade-ball.fandom.com/wiki/Codes",
+      "resgateOficial": "https://www.roblox.com/discover/",
+      "resgateInGame": true,
+      "formatoCodigo": "[A-Za-z0-9_]{4,24}",
+      "permiteMinusculas": true,
+      "palavrasFormato": "palavras e siglas com letras maiúsculas e minúsculas, às vezes com sublinhado (ex.: Sub2Gamer)",
+      "passosResgate": [
+        "Abra Blade Ball no Roblox.",
+        "Procure o botão de códigos (ícone do Twitter/pássaro, engrenagem ou menu).",
+        "Cole o código exatamente como está — maiúsculas e minúsculas importam — e confirme."
+      ],
+      "fontes": [
+        {
+          "tipo": "html",
+          "url": "https://blade-ball.fandom.com/wiki/Codes",
+          "rotulo": "Fandom Blade Ball"
+        },
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/BladeBall.json?limit=50",
+          "rotulo": "r/BladeBall"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Blade Ball?",
+          "resposta": "Dentro do jogo, pelo botão de códigos (ícone do Twitter ou menu de configurações)."
+        },
+        {
+          "pergunta": "Por que o código de Blade Ball não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ]
+    },
+    {
+      "id": "king-legacy",
+      "nome": "King Legacy",
+      "slug": "king-legacy",
+      "editora": "Roblox",
+      "oficial": "https://king-legacy.fandom.com/wiki/Codes",
+      "resgateOficial": "https://www.roblox.com/discover/",
+      "resgateInGame": true,
+      "formatoCodigo": "[A-Za-z0-9_]{4,24}",
+      "permiteMinusculas": true,
+      "palavrasFormato": "palavras e siglas com letras maiúsculas e minúsculas, às vezes com sublinhado (ex.: Sub2Gamer)",
+      "passosResgate": [
+        "Abra King Legacy no Roblox.",
+        "Procure o botão de códigos (ícone do Twitter/pássaro, engrenagem ou menu).",
+        "Cole o código exatamente como está — maiúsculas e minúsculas importam — e confirme."
+      ],
+      "fontes": [
+        {
+          "tipo": "html",
+          "url": "https://king-legacy.fandom.com/wiki/Codes",
+          "rotulo": "Fandom King Legacy"
+        },
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/KingLegacy.json?limit=50",
+          "rotulo": "r/KingLegacy"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de King Legacy?",
+          "resposta": "Dentro do jogo, pelo botão de códigos (ícone do Twitter ou menu de configurações)."
+        },
+        {
+          "pergunta": "Por que o código de King Legacy não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ]
+    },
+    {
+      "id": "shindo-life",
+      "nome": "Shindo Life",
+      "slug": "shindo-life",
+      "editora": "Roblox",
+      "oficial": "https://shindo-life-rell.fandom.com/wiki/Codes",
+      "resgateOficial": "https://www.roblox.com/discover/",
+      "resgateInGame": true,
+      "formatoCodigo": "[A-Za-z0-9_]{4,24}",
+      "permiteMinusculas": true,
+      "palavrasFormato": "palavras e siglas com letras maiúsculas e minúsculas, às vezes com sublinhado (ex.: Sub2Gamer)",
+      "passosResgate": [
+        "Abra Shindo Life no Roblox.",
+        "Procure o botão de códigos (ícone do Twitter/pássaro, engrenagem ou menu).",
+        "Cole o código exatamente como está — maiúsculas e minúsculas importam — e confirme."
+      ],
+      "fontes": [
+        {
+          "tipo": "html",
+          "url": "https://shindo-life-rell.fandom.com/wiki/Codes",
+          "rotulo": "Fandom Shindo Life"
+        },
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/Shindo_Life.json?limit=50",
+          "rotulo": "r/Shindo_Life"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Shindo Life?",
+          "resposta": "Dentro do jogo, pelo botão de códigos (ícone do Twitter ou menu de configurações)."
+        },
+        {
+          "pergunta": "Por que o código de Shindo Life não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ]
+    },
+    {
+      "id": "type-soul",
+      "nome": "Type Soul",
+      "slug": "type-soul",
+      "editora": "Roblox",
+      "oficial": "https://type-soul.fandom.com/wiki/Codes",
+      "resgateOficial": "https://www.roblox.com/discover/",
+      "resgateInGame": true,
+      "formatoCodigo": "[A-Za-z0-9_]{4,24}",
+      "permiteMinusculas": true,
+      "palavrasFormato": "palavras e siglas com letras maiúsculas e minúsculas, às vezes com sublinhado (ex.: Sub2Gamer)",
+      "passosResgate": [
+        "Abra Type Soul no Roblox.",
+        "Procure o botão de códigos (ícone do Twitter/pássaro, engrenagem ou menu).",
+        "Cole o código exatamente como está — maiúsculas e minúsculas importam — e confirme."
+      ],
+      "fontes": [
+        {
+          "tipo": "html",
+          "url": "https://type-soul.fandom.com/wiki/Codes",
+          "rotulo": "Fandom Type Soul"
+        },
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/type_soul.json?limit=50",
+          "rotulo": "r/type_soul"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Type Soul?",
+          "resposta": "Dentro do jogo, pelo botão de códigos (ícone do Twitter ou menu de configurações)."
+        },
+        {
+          "pergunta": "Por que o código de Type Soul não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ]
+    },
+    {
+      "id": "blue-lock-rivals",
+      "nome": "Blue Lock: Rivals",
+      "slug": "blue-lock-rivals",
+      "editora": "Roblox",
+      "oficial": "https://blue-lock-rivals.fandom.com/wiki/Codes",
+      "resgateOficial": "https://www.roblox.com/discover/",
+      "resgateInGame": true,
+      "formatoCodigo": "[A-Za-z0-9_]{4,24}",
+      "permiteMinusculas": true,
+      "palavrasFormato": "palavras e siglas com letras maiúsculas e minúsculas, às vezes com sublinhado (ex.: Sub2Gamer)",
+      "passosResgate": [
+        "Abra Blue Lock: Rivals no Roblox.",
+        "Procure o botão de códigos (ícone do Twitter/pássaro, engrenagem ou menu).",
+        "Cole o código exatamente como está — maiúsculas e minúsculas importam — e confirme."
+      ],
+      "fontes": [
+        {
+          "tipo": "html",
+          "url": "https://blue-lock-rivals.fandom.com/wiki/Codes",
+          "rotulo": "Fandom Blue Lock Rivals"
+        },
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/BlueLockRivals.json?limit=50",
+          "rotulo": "r/BlueLockRivals"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Blue Lock: Rivals?",
+          "resposta": "Dentro do jogo, pelo botão de códigos (ícone do Twitter ou menu de configurações)."
+        },
+        {
+          "pergunta": "Por que o código de Blue Lock: Rivals não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ]
+    },
+    {
+      "id": "honkai-impact-3rd",
+      "nome": "Honkai Impact 3rd",
+      "slug": "honkai-impact-3rd",
+      "editora": "HoYoverse",
+      "oficial": "https://honkaiimpact3.hoyoverse.com",
+      "resgateOficial": "https://honkaiimpact3.hoyoverse.com",
+      "resgateInGame": false,
+      "formatoCodigo": "[A-Z0-9]{10,16}",
+      "palavrasFormato": "sequências de 10 a 16 letras maiúsculas e números",
+      "passosResgate": [
+        "Abra Honkai Impact 3rd e toque no ID do jogador (canto superior esquerdo).",
+        "Vá em \"Conta\" → \"Resgatar recompensa\" e cole o código.",
+        "A recompensa chega pelo correio do jogo."
+      ],
+      "fontes": [
+        {
+          "tipo": "hoyolab",
+          "url": "https://bbs-api-os.hoyolab.com/community/post/wapi/getNewsList?gids=1&page_size=15&type=3",
+          "rotulo": "HoYoLAB anúncios"
+        },
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/houkai3rd.json?limit=50",
+          "rotulo": "r/houkai3rd"
+        },
+        {
+          "tipo": "html",
+          "url": "https://honkaiimpact3.fandom.com/wiki/Exchange_Rewards",
+          "rotulo": "Fandom HI3"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Honkai Impact 3rd?",
+          "resposta": "Na página oficial de resgate do jogo, com a conta logada."
+        },
+        {
+          "pergunta": "Por que o código de Honkai Impact 3rd não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ]
+    },
+    {
+      "id": "wuthering-waves",
+      "nome": "Wuthering Waves",
+      "slug": "wuthering-waves",
+      "editora": "Kuro Games",
+      "oficial": "https://wutheringwaves.kurogames.com",
+      "resgateOficial": "https://wutheringwaves.kurogames.com",
+      "resgateInGame": true,
+      "formatoCodigo": "[A-Z0-9]{6,16}",
+      "palavrasFormato": "palavras em maiúsculas de 6 a 16 caracteres",
+      "passosResgate": [
+        "Abra Wuthering Waves e entre no menu Terminal → Configurações.",
+        "Em \"Outras configurações\", toque em \"Resgatar código\".",
+        "Cole o código e confirme; a recompensa chega pelo correio."
+      ],
+      "fontes": [
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/WutheringWaves.json?limit=50",
+          "rotulo": "r/WutheringWaves"
+        },
+        {
+          "tipo": "html",
+          "url": "https://wuthering-waves.fandom.com/wiki/Redemption_Code",
+          "rotulo": "Fandom Wuthering Waves"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Wuthering Waves?",
+          "resposta": "Dentro do jogo, pelo botão de códigos (ícone do Twitter ou menu de configurações)."
+        },
+        {
+          "pergunta": "Por que o código de Wuthering Waves não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ]
+    },
+    {
+      "id": "mobile-legends-bang-bang",
+      "nome": "Mobile Legends: Bang Bang",
+      "slug": "mobile-legends-bang-bang",
+      "editora": "Moonton",
+      "oficial": "https://m.mobilelegends.com",
+      "resgateOficial": "https://m.mobilelegends.com/en/codexchange",
+      "resgateInGame": false,
+      "formatoCodigo": "[A-Z0-9]{10,17}",
+      "palavrasFormato": "sequências de 10 a 17 letras maiúsculas e números",
+      "passosResgate": [
+        "Acesse a Code Exchange oficial: m.mobilelegends.com/en/codexchange.",
+        "Digite o código, seu ID de jogo e o código de verificação enviado no correio do jogo.",
+        "Confirme o resgate e confira o correio in-game."
+      ],
+      "fontes": [
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/MobileLegendsGame.json?limit=50",
+          "rotulo": "r/MobileLegendsGame"
+        },
+        {
+          "tipo": "html",
+          "url": "https://mobile-legends.fandom.com/wiki/Code_Redemption",
+          "rotulo": "Fandom MLBB"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Mobile Legends: Bang Bang?",
+          "resposta": "Na página oficial de resgate do jogo, com a conta logada."
+        },
+        {
+          "pergunta": "Por que o código de Mobile Legends: Bang Bang não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ]
+    },
+    {
+      "id": "whiteout-survival",
+      "nome": "Whiteout Survival",
+      "slug": "whiteout-survival",
+      "editora": "Century Games",
+      "oficial": "https://whiteoutsurvival.com",
+      "resgateOficial": "https://wos-giftcode.centurygame.com",
+      "resgateInGame": true,
+      "formatoCodigo": "[A-Za-z0-9]{4,20}",
+      "palavrasFormato": "palavras e siglas de 4 a 20 caracteres",
+      "passosResgate": [
+        "Acesse o Gift Code Center oficial: wos-giftcode.centurygame.com.",
+        "Digite seu ID de jogador (perfil no jogo) e o código.",
+        "Confirme e receba pelo correio in-game. Também dá para resgatar em Avatar → Configurações → Gift Code."
+      ],
+      "fontes": [
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/whiteoutsurvival.json?limit=50",
+          "rotulo": "r/whiteoutsurvival"
+        },
+        {
+          "tipo": "html",
+          "url": "https://whiteout-survival.fandom.com/wiki/Codes",
+          "rotulo": "Fandom Whiteout Survival"
+        },
+        {
+          "tipo": "telegram",
+          "url": "https://t.me/s/whiteoutsurvivalofficial",
+          "rotulo": "Telegram @whiteoutsurvivalofficial"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Whiteout Survival?",
+          "resposta": "Dentro do jogo, pelo botão de códigos (ícone do Twitter ou menu de configurações)."
+        },
+        {
+          "pergunta": "Por que o código de Whiteout Survival não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ],
+      "permiteMinusculas": true
+    },
+    {
+      "id": "afk-arena",
+      "nome": "AFK Arena",
+      "slug": "afk-arena",
+      "editora": "Lilith Games",
+      "oficial": "https://www.afkarena.com",
+      "resgateOficial": "https://cdkey.lilith.com/afk-global",
+      "resgateInGame": false,
+      "formatoCodigo": "[A-Za-z0-9]{6,16}",
+      "palavrasFormato": "palavras e siglas de 6 a 16 caracteres (ex.: AFK888)",
+      "passosResgate": [
+        "Abra a página oficial de resgate de AFK Arena com a conta logada.",
+        "Cole o código no campo indicado e confirme.",
+        "A recompensa chega no correio dentro do jogo."
+      ],
+      "fontes": [
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/afkarena.json?limit=50",
+          "rotulo": "r/afkarena"
+        },
+        {
+          "tipo": "html",
+          "url": "https://afk-arena.fandom.com/wiki/Redemption_Code",
+          "rotulo": "Fandom AFK Arena"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de AFK Arena?",
+          "resposta": "Na página oficial de resgate do jogo, com a conta logada."
+        },
+        {
+          "pergunta": "Por que o código de AFK Arena não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ],
+      "permiteMinusculas": true
+    },
+    {
+      "id": "cookie-run-kingdom",
+      "nome": "Cookie Run: Kingdom",
+      "slug": "cookie-run-kingdom",
+      "editora": "Devsisters",
+      "oficial": "https://www.cookierun-kingdom.com",
+      "resgateOficial": "https://game.cookierun-kingdom.com/en/coupon",
+      "resgateInGame": false,
+      "formatoCodigo": "[A-Z0-9]{12,16}",
+      "palavrasFormato": "sequências de 12 a 16 letras maiúsculas e números",
+      "passosResgate": [
+        "Acesse o DevPlay Coupon: game.cookierun-kingdom.com/en/coupon.",
+        "Digite sua conta DevPlay (e-mail cadastrado no jogo) e o código.",
+        "A recompensa chega pelo correio do jogo."
+      ],
+      "fontes": [
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/CookieRunKingdoms.json?limit=50",
+          "rotulo": "r/CookieRunKingdoms"
+        },
+        {
+          "tipo": "html",
+          "url": "https://cookierunkingdom.fandom.com/wiki/Redeem_Codes",
+          "rotulo": "Fandom CRK"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Cookie Run: Kingdom?",
+          "resposta": "Na página oficial de resgate do jogo, com a conta logada."
+        },
+        {
+          "pergunta": "Por que o código de Cookie Run: Kingdom não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ]
+    },
+    {
+      "id": "pokemon-go",
+      "nome": "Pokémon GO",
+      "slug": "pokemon-go",
+      "editora": "Niantic",
+      "oficial": "https://pokemongolive.com",
+      "resgateOficial": "https://store.pokemongolive.com/offer-redemption",
+      "resgateInGame": false,
+      "formatoCodigo": "[A-Z0-9]{10,20}",
+      "palavrasFormato": "sequências de 10 a 20 letras maiúsculas e números",
+      "passosResgate": [
+        "Android: loja Niantic (store.pokemongolive.com/offer-redemption) ou dentro do jogo em Loja → Resgatar.",
+        "iOS: só pela página web de resgate da Niantic.",
+        "Faça login com a mesma conta do jogo e confirme."
+      ],
+      "fontes": [
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/pokemongo.json?limit=50",
+          "rotulo": "r/pokemongo"
+        },
+        {
+          "tipo": "html",
+          "url": "https://pokemongo.fandom.com/wiki/List_of_promo_codes",
+          "rotulo": "Fandom Pokémon GO"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Pokémon GO?",
+          "resposta": "Na página oficial de resgate do jogo, com a conta logada."
+        },
+        {
+          "pergunta": "Por que o código de Pokémon GO não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ],
+      "moedaGratis": {
+        "nome": "PokéCoins",
+        "metodos": [
+          {
+            "titulo": "Defender ginásios",
+            "descricao": "Deixe Pokémon em ginásios: cada 10 minutos de defesa rende 1 PokéCoin quando o Pokémon volta, até 50 por dia — o método grátis oficial.",
+            "esforco": "facil"
+          },
+          {
+            "titulo": "Tarefas de pesquisa de campo",
+            "descricao": "Algumas pesquisas e eventos pagam PokéCoins e itens raros.",
+            "esforco": "medio"
+          },
+          {
+            "titulo": "Ofertas e passes promocionais",
+            "descricao": "A loja Niantic dá itens e passes em datas comemorativas — veja os códigos ativos aqui.",
+            "esforco": "facil"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tower-of-fantasy",
+      "nome": "Tower of Fantasy",
+      "slug": "tower-of-fantasy",
+      "editora": "Level Infinite",
+      "oficial": "https://www.toweroffantasy-global.com",
+      "resgateOficial": "https://www.toweroffantasy-global.com",
+      "resgateInGame": true,
+      "formatoCodigo": "[A-Za-z0-9]{6,16}",
+      "palavrasFormato": "palavras e siglas de 6 a 16 caracteres (ex.: TOF888)",
+      "passosResgate": [
+        "Abra a página oficial de resgate de Tower of Fantasy com a conta logada.",
+        "Cole o código no campo indicado e confirme.",
+        "A recompensa chega no correio dentro do jogo."
+      ],
+      "fontes": [
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/TowerofFantasy.json?limit=50",
+          "rotulo": "r/TowerofFantasy"
+        },
+        {
+          "tipo": "html",
+          "url": "https://toweroffantasy.fandom.com/wiki/Codes",
+          "rotulo": "Fandom Tower of Fantasy"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Tower of Fantasy?",
+          "resposta": "Dentro do jogo, pelo botão de códigos (ícone do Twitter ou menu de configurações)."
+        },
+        {
+          "pergunta": "Por que o código de Tower of Fantasy não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ],
+      "permiteMinusculas": true
+    },
+    {
+      "id": "solo-leveling-arise",
+      "nome": "Solo Leveling: Arise",
+      "slug": "solo-leveling-arise",
+      "editora": "Netmarble",
+      "oficial": "https://sololeveling.netmarble.com",
+      "resgateOficial": "https://coupon.netmarble.com/sololv",
+      "resgateInGame": false,
+      "formatoCodigo": "[A-Z0-9]{8,20}",
+      "palavrasFormato": "sequências de 8 a 20 letras maiúsculas e números",
+      "passosResgate": [
+        "Acesse a página de cupom Netmarble: coupon.netmarble.com/sololv.",
+        "Informe o código do jogador (perfil no jogo) e o cupom.",
+        "A recompensa chega pelo correio in-game."
+      ],
+      "fontes": [
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/SoloLevelingArise.json?limit=50",
+          "rotulo": "r/SoloLevelingArise"
+        },
+        {
+          "tipo": "html",
+          "url": "https://solo-leveling-arise.fandom.com/wiki/Codes",
+          "rotulo": "Fandom Solo Leveling Arise"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Solo Leveling: Arise?",
+          "resposta": "Na página oficial de resgate do jogo, com a conta logada."
+        },
+        {
+          "pergunta": "Por que o código de Solo Leveling: Arise não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ]
+    },
+    {
+      "id": "goddess-of-victory-nikke",
+      "nome": "Goddess of Victory: Nikke",
+      "slug": "goddess-of-victory-nikke",
+      "editora": "Level Infinite",
+      "oficial": "https://nikke-en.com",
+      "resgateOficial": "https://nikke-en.com",
+      "resgateInGame": true,
+      "formatoCodigo": "[A-Z0-9]{8,16}",
+      "palavrasFormato": "sequências de 8 a 16 letras maiúsculas e números",
+      "passosResgate": [
+        "Abra Nikke e toque no quadrado de eventos (canto superior direito).",
+        "Entre em \"CD-Key Redemption Portal\" e cole o código.",
+        "Confirme e receba pelo correio."
+      ],
+      "fontes": [
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/NikkeMobile.json?limit=50",
+          "rotulo": "r/NikkeMobile"
+        },
+        {
+          "tipo": "html",
+          "url": "https://nikke-goddess-of-victory-international.fandom.com/wiki/Codes",
+          "rotulo": "Fandom Nikke"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Goddess of Victory: Nikke?",
+          "resposta": "Dentro do jogo, pelo botão de códigos (ícone do Twitter ou menu de configurações)."
+        },
+        {
+          "pergunta": "Por que o código de Goddess of Victory: Nikke não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ]
+    },
+    {
+      "id": "rocket-league",
+      "nome": "Rocket League",
+      "slug": "rocket-league",
+      "editora": "Psyonix / Epic",
+      "oficial": "https://www.rocketleague.com",
+      "resgateOficial": "https://www.rocketleague.com",
+      "resgateInGame": true,
+      "formatoCodigo": "[a-zA-Z]{4,20}",
+      "palavrasFormato": "palavras de 4 a 20 letras, geralmente minúsculas (ex.: popcorn)",
+      "passosResgate": [
+        "Abra Rocket League e vá em Extras → Resgatar código.",
+        "Digite o código exatamente como está e confirme."
+      ],
+      "fontes": [
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/RocketLeague.json?limit=50",
+          "rotulo": "r/RocketLeague"
+        },
+        {
+          "tipo": "html",
+          "url": "https://rocketleague.fandom.com/wiki/Redeem_code",
+          "rotulo": "Fandom Rocket League"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código de Rocket League?",
+          "resposta": "Dentro do jogo, pelo botão de códigos (ícone do Twitter ou menu de configurações)."
+        },
+        {
+          "pergunta": "Por que o código de Rocket League não funciona?",
+          "resposta": "Os motivos mais comuns: o código expirou ou atingiu o limite de resgates, já foi usado na sua conta, ou foi digitado com letra errada — maiúsculas e minúsculas costumam importar."
+        }
+      ],
+      "permiteMinusculas": true
     }
   ]
 }

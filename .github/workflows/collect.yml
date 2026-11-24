@@ -1,8 +1,8 @@
 name: Coleta de códigos
 
-# Lê as fontes de cada jogo a cada 30 min e abre candidatos em pending.json.
-# Os segredos do Telegram ficam em Settings → Secrets; sem eles, a coleta só
-# registra os candidatos para aprovação manual (`npm run approve -- --list`).
+# Pipeline 100% automático: lê as fontes a cada 30 min, publica códigos
+# novos direto em codes.json e expira os que sumiram. Sem aprovação humana.
+# O commit dispara o rebuild do Cloudflare Pages (repo conectado).
 
 on:
   schedule:
@@ -29,8 +29,8 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run collect
-      - name: Salva candidatos novos
+      - name: Salva códigos publicados/expirados
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: 'data: novos candidatos de código coletados'
-          file_pattern: 'src/data/pending.json'
+          commit_message: 'data: coleta automática de códigos'
+          file_pattern: 'src/data/*.json'

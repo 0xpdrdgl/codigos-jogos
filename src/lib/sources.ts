@@ -10,6 +10,8 @@
  * - 'hoyolab' — API pública do HoYoLAB (getNewsList + getPostFull), a fonte
  *   mais confiável para Genshin/HSR/ZZZ: códigos saem primeiro nos anúncios
  *   oficiais
+ * - 'telegram' — preview público de canal (t.me/s/{canal}), sem API e sem
+ *   login; útil para jogos sem fonte oficial (ex.: Free Fire)
  *
  * Falhas de rede não derrubam a coleta — a fonte vazia só não gera itens.
  */
@@ -22,6 +24,11 @@ export interface ItemFonte {
   titulo: string;
   texto: string;
   url: string;
+  /**
+   * Item extraído da seção de expirados da fonte (wiki listam código morto
+   * separado): não gera candidato — serve para expirar o que está na base.
+   */
+  expirado?: boolean;
 }
 
 const UA = 'codigos-jogos/0.1 (+https://codigos-jogos.pages.dev)';
@@ -41,7 +48,8 @@ export async function coletar(fonte: Fonte): Promise<ItemFonte[]> {
     if (fonte.tipo === 'reddit') return parseReddit(corpo);
     if (fonte.tipo === 'rss') return parseRss(corpo);
     if (fonte.tipo === 'hoyolab') return coletarHoyolab(corpo);
-    return [parseHtml(corpo, fonte)];
+    if (fonte.tipo === 'telegram') return parseTelegram(corpo, fonte);
+    return parseHtml(corpo, fonte);
   } catch (erro) {
     console.warn(`fonte ${fonte.rotulo}: ${erro instanceof Error ? erro.message : erro}`);
     return [];
@@ -98,21 +106,62 @@ const tag = (bloco: string, nome: string): string => {
 const MARCADOR_EXPIRADOS = /expired|expirad[oa]s/i;
 
 /**
- * Página de listagem de códigos: o conteúdo inteiro vira um item.
- * Corta na seção de expirados (wiki listam históricos enormes) e usa o hash
- * do texto como itemId — página sem novidades não gera item novo.
+ * Página de listagem de códigos: o conteúdo vira até dois itens — o trecho
+ * antes da seção de expirados (candidatos) e o trecho depois (evidência de
+ * código morto). itemId = hash do texto: página sem novidade não gera item.
  */
-export function parseHtml(html: string, fonte: Fonte): ItemFonte {
-  let texto = decodeXml(html).replace(/\s+/g, ' ');
+export function parseHtml(html: string, fonte: Fonte): ItemFonte[] {
+  // Strip script/style/comentários ANTES de decodificar: JS inline e JSON-LD
+  // contêm tokens com cara de código (wgPageName, u003C, dateModified...).
+  const limpo = html
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<noscript[\s\S]*?<\/noscript>/gi, ' ')
+    .replace(/<!--[\s\S]*?-->/g, ' ');
+  const texto = decodeXml(limpo).replace(/\s+/g, ' ');
   const corte = texto.search(MARCADOR_EXPIRADOS);
-  if (corte > 0) texto = texto.slice(0, corte);
-  const hash = createHash('sha1').update(texto).digest('hex').slice(0, 12);
-  return {
-    itemId: `${fonte.url}#${hash}`,
+  const ativo = corte > 0 ? texto.slice(0, corte) : texto;
+  const itemAtivo: ItemFonte = {
+    itemId: `${fonte.url}#${createHash('sha1').update(ativo).digest('hex').slice(0, 12)}`,
     titulo: fonte.rotulo,
-    texto,
+    texto: ativo,
     url: fonte.url,
   };
+  if (corte <= 0) return [itemAtivo];
+  const morto = texto.slice(corte);
+  const itemMorto: ItemFonte = {
+    itemId: `${fonte.url}#exp#${createHash('sha1').update(morto).digest('hex').slice(0, 12)}`,
+    titulo: `${fonte.rotulo} (expirados)`,
+    texto: morto,
+    url: fonte.url,
+    expirado: true,
+  };
+  return [itemAtivo, itemMorto];
+}
+
+/**
+ * Preview público de canal do Telegram (t.me/s/{canal}): cada mensagem vira
+ * um item, com data-post como ID estável. Não usa Bot API nem login.
+ */
+export function parseTelegram(html: string, fonte: Fonte): ItemFonte[] {
+  const itens: ItemFonte[] = [];
+  // Split no início de cada div de mensagem: `tgme_widget_message ` ou
+  // `tgme_widget_message"` — o sufixo evita casar com `..._message_text`.
+  const blocos = html.split(/(?=<div class="tgme_widget_message(?:\s|"))/);
+  for (const bloco of blocos) {
+    const post = bloco.match(/data-post="([^"]+)"/)?.[1];
+    const textoBruto = bloco.match(/tgme_widget_message_text[^>]*>([\s\S]*?)<\/div>/)?.[1];
+    if (!post || !textoBruto) continue;
+    const texto = decodeXml(textoBruto).replace(/\s+/g, ' ').trim();
+    if (!texto) continue;
+    itens.push({
+      itemId: post,
+      titulo: fonte.rotulo,
+      texto,
+      url: `https://t.me/${post}`,
+    });
+  }
+  return itens;
 }
 
 const URL_POST = 'https://bbs-api-os.hoyolab.com/community/post/wapi/getPostFull?post_id=';

@@ -1,15 +1,13 @@
 /**
- * Aprovação dos candidatos pendentes.
+ * Override manual sobre a base — o pipeline normal é 100% automático
+ * (collect.ts publica direto). Este script serve para CORRIGIR erros:
+ * rejeitar um código ruim (ele não volta) ou aprovar algo que passou batido.
  *
  * Modos:
- *   npm run approve            — loop contínuo esperando os botões do Telegram
- *   npm run approve -- --once  — processa os callbacks atuais e sai
- *   npm run approve -- --list  — lista os candidatos aguardando
+ *   npm run approve -- --list  — lista os candidatos registrados
  *   npm run approve -- --approve <id> [--recompensa "..."]
  *   npm run approve -- --reject <id>
- *
- * Aprovado → entra em codes.json e dispara o aviso no canal (se configurado).
- * Depois rode `npm run publish` para commitar e deployar.
+ *   npm run approve            — loop de callbacks do Telegram (opcional)
  */
 import { obterJogo } from '../src/lib/games';
 import { buscarUpdates, confirmarCallback, avisarCanal, telegramDisponivel } from '../src/lib/telegram';

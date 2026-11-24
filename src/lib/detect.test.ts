@@ -55,3 +55,38 @@ test('contextoDoCodigo centra o recorte no código', () => {
   assert.ok(ctx.includes('LA54C77THS99'));
   assert.ok(ctx.length <= 110);
 });
+
+test('permiteMinusculas aceita case misto com dígito perto de gatilho', () => {
+  const achados = candidatosDe('redeem code Sub2Gamer agora', '[A-Za-z0-9_]{4,24}', { permiteMinusculas: true });
+  assert.equal(achados[0].codigo, 'Sub2Gamer');
+  assert.equal(achados[0].confianca, 'media');
+});
+
+test('permiteMinusculas rejeita palavras comuns e códigos sem contexto', () => {
+  const achados = candidatosDe('Lucky Egg Official Roblox NorthernExpedition', '[A-Za-z0-9_]{4,24}', { permiteMinusculas: true });
+  assert.equal(achados.length, 0); // sem gatilho por perto, nada entra
+});
+
+test('permiteMinusculas exige dígito ou underline para token misto', () => {
+  const achados = candidatosDe('use code MerryFischmas and Sub2Gamer', '[A-Za-z0-9_]{4,24}', { permiteMinusculas: true });
+  const codigos = achados.map((a) => a.codigo);
+  assert.ok(codigos.includes('Sub2Gamer')); // tem dígito
+  assert.ok(!codigos.includes('MerryFischmas')); // camelCase sem dígito: fora
+});
+
+test('bloqueados remove palavras do nome do jogo', () => {
+  const achados = candidatosDe('FISCH code ACTIVE123', '[A-Za-z0-9_]{4,24}', {
+    permiteMinusculas: true,
+    bloqueados: new Set(['FISCH']),
+  });
+  const codigos = achados.map((a) => a.codigo);
+  assert.ok(!codigos.includes('FISCH'));
+  assert.ok(codigos.includes('ACTIVE123'));
+});
+
+test('fragmento de data ISO não é código', () => {
+  const achados = candidatosDe('code updated 24T17 and REAL9CODE', '[A-Z0-9]{4,20}');
+  const codigos = achados.map((a) => a.codigo);
+  assert.ok(!codigos.includes('24T17'));
+  assert.ok(codigos.includes('REAL9CODE'));
+});

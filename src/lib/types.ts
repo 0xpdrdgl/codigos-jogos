@@ -3,7 +3,7 @@
  * (scripts/) e a renderização do site (src/pages).
  */
 
-export type TipoFonte = 'reddit' | 'rss' | 'html' | 'hoyolab';
+export type TipoFonte = 'reddit' | 'rss' | 'html' | 'hoyolab' | 'telegram';
 
 export interface Fonte {
   tipo: TipoFonte;
@@ -29,6 +29,8 @@ export interface Jogo {
   resgateInGame: boolean;
   /** Regex do formato do código (fonte única: valida detecção e base). */
   formatoCodigo: string;
+  /** Códigos case-sensitive (Roblox experiences): misturam minúsculas. */
+  permiteMinusculas?: boolean;
   /** Descrição do formato em texto, exibida ao usuário. */
   palavrasFormato: string;
   passosResgate: string[];

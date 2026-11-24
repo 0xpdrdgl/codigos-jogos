@@ -34,27 +34,60 @@ export interface Extraido {
   confianca: 'alta' | 'media';
 }
 
+/** Palavras que casam com formatos mas nunca são código (falsos positivos de página de lista). */
+const BLOQUEADOS = new Set([
+  'REDEEM', 'REDEMPTION', 'CODES', 'CODE', 'UPDATE', 'UPDATES', 'EXPIRED',
+  'ACTIVE', 'REWARD', 'REWARDS', 'WORKING', 'LATEST', 'CHECK', 'CLICK',
+  'COPY', 'PLEASE', 'DISCORD', 'TWITTER', 'YOUTUBE', 'FOLLOW', 'ROBUX',
+  'SPINS', 'COINS', 'GEMS', 'ITEMS', 'BOOSTS', 'STATUS', 'NOTE', 'WIKI',
+  'FANDOM', 'EDIT', 'SOURCE', 'HISTORY', 'PAGE', 'GAME', 'VERSION',
+  'MAINTENANCE', 'GUIDE', 'PATCH', 'EVENT', 'EVENTS', 'FREE', 'GIFT',
+  'GIFTS', 'TODAY', 'HERE', 'LIST', 'SEASON', 'SERVER', 'PLAYERS',
+]);
+
 const JANELA_CONTEXTO = 90;
+
+export interface OpcoesDeteccao {
+  /** Aceita tokens case-mistos (Roblox). Exige gatilho + dígito/underline. */
+  permiteMinusculas?: boolean;
+  /** Tokens extras a ignorar (ex.: palavras do nome do jogo — "FISCH"). */
+  bloqueados?: Set<string>;
+}
 
 /**
  * Extrai candidatos a código de um texto, respeitando o formato do jogo.
- * Tokens precisam estar em CAIXA ALTA no texto original.
+ * Por padrão só tokens em CAIXA ALTA. Com `permiteMinusculas`, tokens
+ * case-mistos precisam de dígito/underline + palavra-gatilho por perto —
+ * senão qualquer palavra com inicial maiúscula numa wiki ("Lucky",
+ * "Official") viraria "código". Códigos 100% minúsculos ficam de fora.
  */
-export function extrairCodigos(texto: string, formatoCodigo: string): Extraido[] {
+export function extrairCodigos(
+  texto: string,
+  formatoCodigo: string,
+  opcoes?: OpcoesDeteccao,
+): Extraido[] {
   const formato = new RegExp(`^(?:${formatoCodigo})$`);
+  const tokenRe = opcoes?.permiteMinusculas ? /\b[A-Za-z0-9_]{4,24}\b/g : /\b[A-Z0-9]{4,20}\b/g;
   const achados = new Map<string, Extraido['confianca']>();
-  for (const m of texto.matchAll(/\b[A-Z0-9]{4,20}\b/g)) {
+  for (const m of texto.matchAll(tokenRe)) {
     const token = m[0];
-    if (token !== token.toUpperCase()) continue;
+    if (!/[A-Z]/.test(token)) continue; // só dígitos/minúsculas não é código
+    if (BLOQUEADOS.has(token.toUpperCase()) || opcoes?.bloqueados?.has(token.toUpperCase())) continue;
     if (!formato.test(token)) continue;
-    if (!/[A-Z]/.test(token)) continue; // só dígitos não é código
+    if (/^\d{2}T\d{2}$/.test(token) || /^\d{4}-/.test(token)) continue; // fragmento de data
     const indice = m.index ?? 0;
     const janela = texto.slice(Math.max(0, indice - JANELA_CONTEXTO), indice + JANELA_CONTEXTO);
     const pertoDeGatilho = GATILHOS.some((g) => g.test(janela));
-    if (/\d/.test(token)) {
-      achados.set(token, 'alta'); // letra + dígito é assinatura de código
-    } else if (pertoDeGatilho) {
-      // só letras (ex.: GENSHINGIFT) só conta perto de uma palavra-gatilho
+    const todoMaiusculo = token === token.toUpperCase();
+    if (todoMaiusculo) {
+      if (/\d/.test(token)) {
+        achados.set(token, 'alta'); // letra + dígito é assinatura de código
+      } else if (pertoDeGatilho) {
+        // só letras (ex.: GENSHINGIFT) só conta perto de uma palavra-gatilho
+        if (achados.get(token) !== 'alta') achados.set(token, 'media');
+      }
+    } else if (opcoes?.permiteMinusculas && pertoDeGatilho && (/\d/.test(token) || token.includes('_'))) {
+      // misto tipo "Sub2Gamer"/"KITT_reset": dígito/underline + contexto
       if (achados.get(token) !== 'alta') achados.set(token, 'media');
     }
   }
@@ -62,9 +95,13 @@ export function extrairCodigos(texto: string, formatoCodigo: string): Extraido[]
 }
 
 /** Pipeline completo: gate de relevância + extração. */
-export function candidatosDe(texto: string, formatoCodigo: string): Extraido[] {
+export function candidatosDe(
+  texto: string,
+  formatoCodigo: string,
+  opcoes?: OpcoesDeteccao,
+): Extraido[] {
   if (!textoRelevante(texto)) return [];
-  return extrairCodigos(texto, formatoCodigo);
+  return extrairCodigos(texto, formatoCodigo, opcoes);
 }
 
 /** Recorte curto do texto em volta do código, para a mensagem de aprovação. */

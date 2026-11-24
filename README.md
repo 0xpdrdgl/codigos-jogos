@@ -1,35 +1,37 @@
 # Códigos Jogos
 
-Site estático com **códigos de resgate de jogos** (Genshin Impact, Honkai: Star
-Rail, Zenless Zone Zero, Free Fire) coletados automaticamente das fontes
-oficiais e comunidades — programmatic SEO em Astro, com aprovação humana no
-Telegram antes de qualquer código ir ao ar. Custo zero de infraestrutura.
+Site estático com **códigos de resgate de jogos** (24 jogos: Genshin, Honkai,
+ZZZ, Free Fire, Roblox e mais) coletados **100% automaticamente** — sem
+aprovação humana. Códigos morrem rápido: demora de aprovação custa mais que
+falso positivo, que expira sozinho. Programmatic SEO em Astro, custo zero de
+infraestrutura.
 
 ## Stack
 
 - **Astro 7** (SSG) — build 100% estático, zero runtime de servidor
-- **Tailwind CSS 4** (plugin Vite) — estilização minimalista, tokens em CSS
-- **@astrojs/sitemap** — sitemap fatiado (`entryLimit: 1000`)
-- **@fontsource-variable/newsreader** — serif editorial self-hosted
-- **tsx** — scripts operacionais (coleta, aprovação, publicação, IndexNow)
-- **node:test** — testes de unidade e de integridade da base (18 testes)
+- **Tailwind CSS 4** (plugin Vite) — dark HUD/arcade, Chakra Petch + volt
+- **@astrojs/sitemap** — sitemap fatiado com `lastmod` real por jogo
+- **tsx** — scripts operacionais (coleta, aprovação manual, IndexNow)
+- **node:test** — 28 testes de detecção, parsers e integridade da base
 
-## O fluxo de um código
+## O fluxo de um código (automático)
 
 ```
-fontes (Reddit .json, RSS)          ← games.json declara fontes por jogo
+fontes (HoYoLAB API, Telegram t.me/s, wikis, Reddit, RSS)
     ↓  npm run collect (a cada 30 min via GitHub Actions)
-detect.ts (gate por gatilho + regex do formato do jogo)
-    ↓  candidato em src/data/pending.json
-Telegram (botões ✅/❌) ou CLI (--approve/--reject)
-    ↓  npm run approve
-src/data/codes.json + post no canal do Telegram
-    ↓  npm run publish -- --deploy
-push → build no Cloudflare Pages → npm run indexnow (Bing)
+detect.ts (gate de gatilho + regex do formato + blocklist)
+    ↓  publica DIRETO em src/data/codes.json + post no canal Telegram
+re-verificação em cada run (código re-visto renova ultimaVerificacao)
+    ↓  sumiu de todas as fontes por 14 dias → expirado automático
+commit → push → rebuild no Cloudflare Pages → sitemap lastmod muda
 ```
 
-A deduplicação funciona em três níveis: item de fonte já lido (`seen`),
-código já na base e código já pendente de aprovação.
+- **Dedup em 3 níveis:** item de fonte já lido (`seen`), código na base,
+  código já proposto (rejeitados manuais não voltam).
+- **Auto-expiração:** 14 dias sem re-verificação, ou código flagrado na
+  seção "expirados" de uma wiki.
+- **Override manual** continua existindo: `npm run approve -- --reject <id>`
+  remove um código ruim e o impede de voltar.
 
 ## Setup
 
@@ -52,7 +54,7 @@ npm run preview    # serve o build local
 ## Testar
 
 ```bash
-npm test           # 18 testes: detecção, parsers de fonte, integridade da base
+npm test           # 28 testes: detecção, parsers de fonte, integridade da base
 npm run lint       # ESLint (flat config + typescript-eslint)
 npm run typecheck  # astro check
 ```
@@ -63,24 +65,23 @@ cada push e pull request.
 ## Operar a coleta
 
 ```bash
-npm run collect                        # lê as fontes e abre candidatos
-npm run approve -- --list              # lista o que está aguardando
-npm run approve -- --approve <id>      # aprova sem Telegram
-npm run approve                        # loop esperando os botões do Telegram
-npm run publish -- --deploy            # commit + push + deploy + IndexNow
+npm run collect                        # pipeline completo: coleta + publica + expira
+npm run approve -- --list              # lista candidatos (auditoria)
+npm run approve -- --reject <id>       # remove um código e o bane da base
+npm run indexnow                       # avisa o Bing após deploy
 ```
 
-Para o bot do Telegram: crie no [@BotFather](https://t.me/BotFather), pegue o
-token, descubra seu `chat_id` (mande qualquer mensagem e consulte
-`getUpdates`) e preencha `TELEGRAM_BOT_TOKEN` + `TELEGRAM_APPROVAL_CHAT_ID` no
-`.env` (local) e nos **secrets do GitHub** (para a workflow `collect.yml`).
+Telegram é só notificação: com `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHANNEL_ID`,
+cada código publicado sai no canal público na hora.
 
 ## Adicionar um jogo
 
 Edite `src/data/games.json` — sem código novo:
 
 - `formatoCodigo`: regex do formato (valida detecção e base, fonte única)
-- `fontes`: endpoints `reddit` (`.json` público) ou `rss`
+- `permiteMinusculas`: `true` para códigos case-sensitive (Roblox)
+- `fontes`: tipos `hoyolab`, `telegram` (t.me/s), `html` (wiki), `reddit`, `rss`
+- `moedaGratis`: opcional — gera a página `/gratis/[jogo]/` (métodos reais)
 - `passosResgate`, `faq`, `resgateOficial`: viram a página e o HowTo/FAQ do SEO
 
 O seed valida tudo no build; slug, URLs e formato inválidos derrubam o CI.
@@ -89,15 +90,16 @@ O seed valida tudo no build; slug, URLs e formato inválidos derrubam o CI.
 
 ```
 src/
-  data/games.json      # jogos, fontes, formato do código, passos e FAQ
+  data/games.json      # 24 jogos, fontes, formato, passos, FAQ, moedaGratis
   data/codes.json      # base publicada (ativos + expirados) — commitada
-  data/pending.json    # fila de aprovação + seen de fontes — commitada
-  lib/                 # tipos, detecção, coletores, Telegram, leitura dos dados
-  pages/               # / · /codigos/ · /codigos/[jogo]/ · .../como-resgatar/
-  components/          # layout, ads CLS-safe, CodeCard, FAQ, breadcrumbs
+  data/pending.json    # auditoria + seen de fontes — commitada
+  lib/                 # tipos, detecção, coletores (5 tipos), Telegram, dados
+  pages/               # / · /codigos/ · /codigos/[jogo]/ · /gratis/[jogo]/
+                       # robots.txt · llms.txt · ads.txt (gerados no build)
+  components/          # layout HUD, ads CLS-safe, CodeCard, FAQ, breadcrumbs
 scripts/
-  collect.ts           # varre fontes e abre candidatos (GitHub Actions, 30 min)
-  approve.ts           # aprova/rejeita via Telegram ou CLI → codes.json
+  collect.ts           # coleta + publicação + expiração (GitHub Actions, 30 min)
+  approve.ts           # override manual (rejeitar código ruim)
   publish.ts           # commit + push + deploy + IndexNow
   seed-data.ts         # portão de validação dos dados antes do build
   indexnow.ts          # envia o sitemap ao IndexNow pós-deploy
@@ -110,12 +112,16 @@ scripts/
   (FAQPage + BreadcrumbList)
 - `/codigos/[jogo]/como-resgatar/` — tutorial com HowTo schema, link oficial
   `nofollow` e formato do código para o usuário reconhecer golpe
+- `/gratis/[jogo]/` — métodos reais de moeda grátis (Robux, Diamantes,
+  PokéCoins) ranqueados por esforço + bloco anti-golpe ("gerador não existe")
 - `/` e `/codigos/` — hubs com contagem de ativos e ItemList
+- `/robots.txt`, `/llms.txt`, `/ads.txt` — gerados no build a partir dos dados
 
 ### Monetização (AdSense)
 
 A integração é acionada por variáveis de ambiente — sem elas, o site renderiza
-placeholders neutros com altura reservada (zero CLS):
+placeholders neutros com altura reservada (zero CLS). `ads.txt` é gerado no
+build a partir de `PUBLIC_ADSENSE_CLIENT`.
 
 ```
 PUBLIC_ADSENSE_CLIENT=ca-pub-XXXXXXXXXXXXXXXX   # ID do publisher
@@ -140,11 +146,11 @@ do Google.
 ## Variáveis de ambiente
 
 Todas estão em `.env.example`, com comentário de uma linha cada. Resumo:
-`SITE_URL` (SEO), `PUBLIC_ADSENSE_*` (monetização), `TELEGRAM_*` (aprovação e
-canal), `LLM_*` (extração da recompensa, opcional).
+`SITE_URL` (SEO), `PUBLIC_ADSENSE_*` (monetização), `TELEGRAM_*` (notificação
+do canal), `LLM_*` (extração da recompensa, opcional).
 
 ## Nota legal
 
 O resgate acontece sempre nos sites/apps oficiais das editoras. Este site não
-é afiliado a HoYoverse, Garena ou qualquer editora; nomes e marcas pertencem
-aos seus detentores.
+é afiliado a HoYoverse, Garena, Roblox Corporation ou qualquer editora; nomes
+e marcas pertencem aos seus detentores.
