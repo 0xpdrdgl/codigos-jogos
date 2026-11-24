@@ -54,6 +54,9 @@ export function validarJogos(): string[] {
     if (jogo.passosResgate.length === 0) erros.push(`${jogo.slug}: sem passosResgate`);
     if (jogo.fontes.length === 0) erros.push(`${jogo.slug}: sem fontes`);
     if (jogo.faq.length === 0) erros.push(`${jogo.slug}: sem faq`);
+    if (jogo.moedaGratis && jogo.moedaGratis.metodos.length === 0) {
+      erros.push(`${jogo.slug}: moedaGratis sem metodos`);
+    }
   }
   return erros;
 }

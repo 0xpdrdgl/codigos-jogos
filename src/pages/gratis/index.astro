@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { jogos } from '../../lib/games';
+
+const comMoeda = jogos.filter((j) => j.moedaGratis);
+---
+
+<BaseLayout
+  title="Moedas grátis em jogos: Robux, Diamantes e mais (métodos reais)"
+  description="Como conseguir Robux, Diamantes, Gemas Essenciais e outras moedas grátis com métodos oficiais e recompensas legítimas — sem hack, sem gerador."
+  canonical="/gratis/"
+>
+  <section class="mx-auto max-w-5xl px-6 pt-10" data-revelar>
+    <Breadcrumbs itens={[{ nome: 'Grátis', href: '/gratis/' }]} />
+    <p class="mt-6 font-mono text-xs font-bold tracking-[0.3em] text-volt uppercase">// métodos reais</p>
+    <h1 class="mt-4 font-display text-4xl font-bold tracking-tight uppercase">Moedas grátis, sem golpe</h1>
+    <p class="mt-3 max-w-2xl text-ink-muted">
+      Os jeitos que de fato funcionam para conseguir moeda de jogo sem pagar:
+      recompensas oficiais, programas de pontos e eventos. Nada de gerador —
+      porque gerador não existe.
+    </p>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+      {
+        comMoeda.map((jogo) => (
+          <a
+            href={`/gratis/${jogo.slug}/`}
+            class="group cut border border-line bg-surface px-5 py-5 transition-colors hover:border-volt-dim"
+          >
+            <div class="flex items-center justify-between gap-4">
+              <div>
+                <span class="block font-display text-xl font-semibold tracking-wide uppercase group-hover:text-volt">
+                  {jogo.moedaGratis!.nome} grátis
+                </span>
+                <span class="mt-0.5 block font-mono text-xs text-ink-muted">{jogo.nome}</span>
+              </div>
+              <span class="font-mono text-xs tracking-wider text-ink-muted uppercase group-hover:text-volt">
+                {jogo.moedaGratis!.metodos.length} métodos →
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

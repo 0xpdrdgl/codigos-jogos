@@ -69,6 +69,16 @@ const jsonLd = [
         {atualizado && <>Última verificação em {dataLonga(atualizado)}. </>}
         Códigos de {jogo.nome} têm formato {jogo.palavrasFormato}.
       </p>
+      {
+        jogo.moedaGratis && (
+          <p class="mt-3">
+            <a
+              href={`/gratis/${jogo.slug}/`}
+              class="font-mono text-xs tracking-wider text-volt uppercase underline underline-offset-4"
+            >como ganhar {jogo.moedaGratis.nome} grátis →</a>
+          </p>
+        )
+      }
     </header>
 
     <section class="mt-10" aria-label="Códigos ativos" data-revelar>

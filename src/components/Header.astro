@@ -23,6 +23,13 @@ const ativo = (base: string) => pathname.startsWith(base);
         ]}
       >Jogos</a>
       <a
+        href="/gratis/"
+        class:list={[
+          'cut-pequeno px-3 py-1.5 transition-colors hover:bg-surface hover:text-volt',
+          ativo('/gratis') ? 'text-volt' : 'text-ink-muted',
+        ]}
+      >Grátis</a>
+      <a
         href="/sobre/"
         class:list={[
           'cut-pequeno px-3 py-1.5 transition-colors hover:bg-surface hover:text-volt',

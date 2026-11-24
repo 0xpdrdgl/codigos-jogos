@@ -10,3 +10,4 @@
 - / — hub com os jogos monitorados e contagem de códigos ativos
 - /codigos/{slug}/ — códigos ativos e expirados do jogo
 - /codigos/{slug}/como-resgatar/ — tutorial de resgate com link oficial
+- /gratis/{slug}/ — métodos reais para conseguir moeda grátis do jogo

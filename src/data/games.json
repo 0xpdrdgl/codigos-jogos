@@ -52,7 +52,33 @@
           "pergunta": "Quanto tempo dura um código de livestream?",
           "resposta": "Códigos divulgados nas transmissões de versão normalmente expiram em 16 a 24 horas. Resgate no mesmo dia."
         }
-      ]
+      ],
+      "moedaGratis": {
+        "nome": "Gemas Essenciais",
+        "metodos": [
+          {
+            "titulo": "Comissões diárias e aventura",
+            "descricao": "Completar as 4 comissões diárias e as missões de aventura é a maior fonte gratuita constante de Gemas Essenciais.",
+            "esforco": "facil"
+          },
+          {
+            "titulo": "Códigos de resgate",
+            "descricao": "Códigos de livestream e eventos soltam Primogems — confira a lista de ativos do jogo aqui no site.",
+            "esforco": "facil"
+          },
+          {
+            "titulo": "Check-in diário no HoYoLAB",
+            "descricao": "O evento de check-in na comunidade oficial paga Primogems e recursos toda semana.",
+            "esforco": "facil",
+            "link": "https://www.hoyolab.com"
+          },
+          {
+            "titulo": "Eventos de versão e Abismo",
+            "descricao": "Eventos limitados, Spiral Abyss e Imaginarium Theater pagam Primogems por progresso — exigem conta evoluída.",
+            "esforco": "dificil"
+          }
+        ]
+      }
     },
     {
       "id": "honkai-star-rail",
@@ -100,7 +126,33 @@
           "pergunta": "Por que o código do Star Rail não funciona?",
           "resposta": "Geralmente é código expirado, já resgatado na conta ou servidor errado. Códigos de livestream duram cerca de um dia."
         }
-      ]
+      ],
+      "moedaGratis": {
+        "nome": "Jade Estelar",
+        "metodos": [
+          {
+            "titulo": "Treino diário e missões",
+            "descricao": "O treino diário e as missões de operação diária são a fonte constante de Jade Estelar.",
+            "esforco": "facil"
+          },
+          {
+            "titulo": "Códigos de resgate",
+            "descricao": "Códigos de livestream e anúncios soltam Jade Estelar — veja a lista de ativos aqui no site.",
+            "esforco": "facil"
+          },
+          {
+            "titulo": "Check-in diário no HoYoLAB",
+            "descricao": "Check-in na comunidade oficial recompensa com recursos e Jade Estelar periodicamente.",
+            "esforco": "facil",
+            "link": "https://www.hoyolab.com"
+          },
+          {
+            "titulo": "Universo Simulado e eventos",
+            "descricao": "Modos roguelike e eventos de versão pagam Jade Estelar por conclusão e ranking.",
+            "esforco": "medio"
+          }
+        ]
+      }
     },
     {
       "id": "zenless-zone-zero",
@@ -139,7 +191,33 @@
           "pergunta": "Onde entra o código do Zenless Zone Zero?",
           "resposta": "No menu do jogo (Mais → Códigos de resgate) ou no site zenless.hoyoverse.com/redemption com a conta logada."
         }
-      ]
+      ],
+      "moedaGratis": {
+        "nome": "Policromo",
+        "metodos": [
+          {
+            "titulo": "Comissões diárias (Ridú)",
+            "descricao": "As comissões diárias da cidade pagam Policromo toda semana somadas.",
+            "esforco": "facil"
+          },
+          {
+            "titulo": "Códigos de resgate",
+            "descricao": "Códigos de livestream e eventos soltam Policromo — confira a lista de ativos do jogo aqui.",
+            "esforco": "facil"
+          },
+          {
+            "titulo": "Check-in diário no HoYoLAB",
+            "descricao": "O check-in na comunidade oficial rende recursos e Policromo periodicamente.",
+            "esforco": "facil",
+            "link": "https://www.hoyolab.com"
+          },
+          {
+            "titulo": "Shiyu Defense e eventos",
+            "descricao": "O modo endgame e os eventos de versão pagam Policromo por progresso.",
+            "esforco": "dificil"
+          }
+        ]
+      }
     },
     {
       "id": "free-fire",
@@ -173,7 +251,98 @@
           "pergunta": "O código do Free Fire funciona em qualquer região?",
           "resposta": "Nem sempre. Muitos códigos são regionais (Brasil, Indonésia, Índia) e só resgatam na região correspondente."
         }
-      ]
+      ],
+      "moedaGratis": {
+        "nome": "Diamantes",
+        "metodos": [
+          {
+            "titulo": "Google Opinion Rewards",
+            "descricao": "Responda pesquisas curtas e acumule saldo no Google Play para comprar Diamantes — o método grátis mais confiável.",
+            "esforco": "medio",
+            "link": "https://play.google.com/store/apps/details?id=com.google.android.apps.paidtasks"
+          },
+          {
+            "titulo": "Eventos oficiais da Garena",
+            "descricao": "Calendários de evento, login diário e missões sazonais distribuem Diamantes e vouchers.",
+            "esforco": "facil"
+          },
+          {
+            "titulo": "Giveaways oficiais",
+            "descricao": "Lives e redes oficiais do Free Fire sorteiam Diamantes — só participe dos canais verificados.",
+            "esforco": "facil"
+          },
+          {
+            "titulo": "Programa de criadores",
+            "descricao": "O Creator Circle da Garena paga em Diamantes quem produz conteúdo sobre o jogo.",
+            "esforco": "dificil"
+          },
+          {
+            "titulo": "Microsoft Rewards",
+            "descricao": "Pontos de buscas do Bing trocam por gift cards que viram saldo para Diamantes.",
+            "esforco": "medio",
+            "link": "https://rewards.bing.com"
+          }
+        ]
+      }
+    },
+    {
+      "id": "roblox",
+      "nome": "Roblox",
+      "slug": "roblox",
+      "editora": "Roblox Corporation",
+      "oficial": "https://www.roblox.com/pt/home",
+      "resgateOficial": "https://www.roblox.com/redeem",
+      "resgateInGame": false,
+      "formatoCodigo": "[A-Z0-9_]{4,20}",
+      "palavrasFormato": "palavras e siglas em maiúsculas, às vezes com sublinhado (ex.: SPIDERCOLA)",
+      "passosResgate": [
+        "Acesse a página oficial de resgate em roblox.com/redeem com sua conta logada.",
+        "Cole o código promocional no campo indicado e confirme.",
+        "Itens promocionais aparecem no inventário da sua conta."
+      ],
+      "fontes": [
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/roblox.json?limit=50",
+          "rotulo": "r/roblox"
+        }
+      ],
+      "faq": [
+        {
+          "pergunta": "Onde resgatar código promocional do Roblox?",
+          "resposta": "Na página oficial roblox.com/redeem, com a conta logada. Não existe resgate dentro do jogo para códigos promocionais."
+        },
+        {
+          "pergunta": "Código de Roblox dá Robux?",
+          "resposta": "Quase nunca. Códigos promocionais oficiais dão itens de avatar (acessórios, roupas), não Robux. Sites que prometem Robux por código são golpe."
+        }
+      ],
+      "moedaGratis": {
+        "nome": "Robux",
+        "metodos": [
+          {
+            "titulo": "Microsoft Rewards",
+            "descricao": "Faça buscas no Bing, acumule pontos e troque por gift cards oficiais do Roblox — o método grátis mais seguro.",
+            "esforco": "medio",
+            "link": "https://rewards.bing.com"
+          },
+          {
+            "titulo": "Códigos promocionais oficiais",
+            "descricao": "Códigos oficiais dão itens de avatar grátis, não Robux — veja os ativos na página de códigos.",
+            "esforco": "facil"
+          },
+          {
+            "titulo": "Criar jogos e itens",
+            "descricao": "Criar experiências, roupas e itens no Roblox Studio e no Marketplace é o único jeito de GERAR Robux de verdade.",
+            "esforco": "dificil"
+          },
+          {
+            "titulo": "Eventos e experiências oficiais",
+            "descricao": "Eventos sazonais e parcerias oficiais às vezes distribuem itens e benefícios — acompanhe os canais oficiais.",
+            "esforco": "facil"
+          }
+        ]
+      }
     }
   ]
 }

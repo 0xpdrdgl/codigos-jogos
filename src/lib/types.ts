@@ -34,6 +34,23 @@ export interface Jogo {
   passosResgate: string[];
   fontes: Fonte[];
   faq: Pergunta[];
+  /** Seção "moeda grátis" (Robux, Diamantes...) — opcional por jogo. */
+  moedaGratis?: MoedaGratis;
+}
+
+export interface MetodoGratis {
+  titulo: string;
+  descricao: string;
+  /** Nível de esforço: 'fácil' | 'médio' | 'difícil'. */
+  esforco: 'facil' | 'medio' | 'dificil';
+  /** Link externo do método (opcional). */
+  link?: string;
+}
+
+export interface MoedaGratis {
+  /** Nome da moeda como o público busca: "Robux", "Diamantes"... */
+  nome: string;
+  metodos: MetodoGratis[];
 }
 
 export type StatusCodigo = 'ativo' | 'expirado';

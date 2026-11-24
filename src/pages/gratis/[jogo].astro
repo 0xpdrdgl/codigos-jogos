@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CodeCard from '../../components/CodeCard.astro';
+import Faq from '../../components/Faq.astro';
+import AdInArticle from '../../components/AdInArticle.astro';
+import { jogos } from '../../lib/games';
+import { doJogo } from '../../lib/codes';
+import type { Jogo, Pergunta } from '../../lib/types';
+
+export function getStaticPaths() {
+  return jogos
+    .filter((j) => j.moedaGratis)
+    .map((jogo) => ({ params: { jogo: jogo.slug }, props: { jogo } }));
+}
+
+interface Props {
+  jogo: Jogo;
+}
+
+const { jogo } = Astro.props;
+const moeda = jogo.moedaGratis!;
+const { ativos } = doJogo(jogo.slug);
+const ano = new Date().getFullYear();
+
+const estiloEsforco: Record<string, string> = {
+  facil: 'bg-ok-bg text-ok-fg',
+  medio: 'bg-warn-bg text-warn-fg',
+  dificil: 'bg-no-bg text-no-fg',
+};
+const rotuloEsforco: Record<string, string> = {
+  facil: 'fácil',
+  medio: 'médio',
+  dificil: 'difícil',
+};
+
+const title = `${moeda.nome} grátis em ${jogo.nome}: ${moeda.metodos.length} métodos que funcionam (${ano})`;
+const description = `Como conseguir ${moeda.nome} grátis em ${jogo.nome} em ${ano}: métodos oficiais, programas de recompensa e eventos — sem gerador, sem hack, sem perder a conta.`;
+
+const faq: Pergunta[] = [
+  {
+    pergunta: `Gerador de ${moeda.nome} grátis existe?`,
+    resposta: `Não. Todo "gerador de ${moeda.nome}" é golpe: eles pedem seu login ou senha e roubam a conta. ${jogo.editora} nunca distribui ${moeda.nome} fora dos canais oficiais listados aqui.`,
+  },
+  {
+    pergunta: `Quanto ${moeda.nome} grátis dá para conseguir?`,
+    resposta: `Depende do método e da época: eventos e códigos são esporádicos, enquanto programas de recompensa (Opinion Rewards, Microsoft Rewards) rendem valores pequenos mas constantes. Nenhum método grátis substitui compra em volume.`,
+  },
+  {
+    pergunta: `Conseguir ${moeda.nome} grátis pode banir minha conta?`,
+    resposta: `Os métodos listados aqui são oficiais ou de programas de recompensa legítimos e não violam as regras do jogo. O que dá ban é usar hacks, exploits, contas compartilhadas ou comprar ${moeda.nome} de vendedores não oficiais.`,
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: new URL('/', Astro.site).href },
+      { '@type': 'ListItem', position: 2, name: 'Grátis', item: new URL('/gratis/', Astro.site).href },
+      { '@type': 'ListItem', position: 3, name: `${moeda.nome} grátis`, item: new URL(`/gratis/${jogo.slug}/`, Astro.site).href },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((p) => ({
+      '@type': 'Question',
+      name: p.pergunta,
+      acceptedAnswer: { '@type': 'Answer', text: p.resposta },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonical={`/gratis/${jogo.slug}/`} jsonLd={jsonLd}>
+  <article class="mx-auto max-w-5xl px-6 pt-10">
+    <Breadcrumbs
+      itens={[
+        { nome: 'Grátis', href: '/gratis/' },
+        { nome: `${moeda.nome} grátis`, href: `/gratis/${jogo.slug}/` },
+      ]}
+    />
+
+    <header class="mt-6" data-revelar>
+      <p class="font-mono text-xs font-bold tracking-[0.3em] text-volt uppercase">// métodos reais · {ano}</p>
+      <h1 class="mt-4 font-display text-5xl font-bold tracking-tight uppercase">
+        {moeda.nome} grátis em {jogo.nome}
+      </h1>
+      <p class="mt-4 max-w-2xl text-ink-muted">
+        Os jeitos que de fato funcionam para conseguir {moeda.nome} sem pagar —
+        ranqueados por esforço. Sem hack, sem gerador, sem risco de ban.
+      </p>
+    </header>
+
+    <section class="mt-10" aria-label="Métodos" data-revelar>
+      <h2 class="font-mono text-sm font-bold tracking-[0.25em] text-volt uppercase">// métodos que funcionam</h2>
+      <div class="mt-5 space-y-3">
+        {
+          moeda.metodos.map((m, i) => (
+            <div class="cut flex items-start gap-4 border border-line bg-surface px-5 py-4">
+              <span class="cut-pequeno mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center border border-volt-dim font-mono text-xs font-bold text-volt">
+                {i + 1}
+              </span>
+              <div class="flex-1">
+                <div class="flex flex-wrap items-center gap-3">
+                  <h3 class="font-display text-base font-semibold tracking-wide uppercase">{m.titulo}</h3>
+                  <span class={`cut-pequeno px-2 py-0.5 font-mono text-[10px] font-bold tracking-widest uppercase ${estiloEsforco[m.esforco]}`}>
+                    {rotuloEsforco[m.esforco]}
+                  </span>
+                </div>
+                <p class="mt-1.5 text-sm leading-relaxed text-ink-muted">{m.descricao}</p>
+                {
+                  m.link && (
+                    <a
+                      href={m.link}
+                      rel="nofollow noopener noreferrer"
+                      class="mt-2 inline-block font-mono text-xs tracking-wider text-volt uppercase underline underline-offset-4"
+                    >{new URL(m.link).hostname} ↗</a>
+                  )
+                }
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="mt-8" aria-label="Aviso sobre golpes" data-revelar>
+      <div class="cut border border-no-bg bg-no-bg/40 px-5 py-5">
+        <h2 class="font-mono text-sm font-bold tracking-[0.25em] text-no-fg uppercase">// gerador é golpe</h2>
+        <p class="mt-2 text-sm leading-relaxed text-ink-muted">
+          Todo site ou app que promete gerar {moeda.nome} de graça pedindo login,
+          senha ou "verificação humana" rouba contas. {jogo.editora} nunca entrega
+          {moeda.nome} fora dos canais oficiais — se prometer {moeda.nome} infinito,
+          é golpe.
+        </p>
+      </div>
+    </section>
+
+    <AdInArticle />
+
+    {
+      ativos.length > 0 && (
+        <section aria-label="Códigos ativos" data-revelar>
+          <h2 class="font-mono text-sm font-bold tracking-[0.25em] text-volt uppercase">
+            // códigos ativos agora em {jogo.nome}
+          </h2>
+          <div class="mt-4 space-y-3">
+            {ativos.slice(0, 3).map((codigo) => <CodeCard codigo={codigo} />)}
+          </div>
+          <p class="mt-4">
+            <a
+              href={`/codigos/${jogo.slug}/`}
+              class="font-mono text-xs tracking-wider text-volt uppercase underline underline-offset-4"
+            >ver todos os códigos →</a>
+          </p>
+        </section>
+      )
+    }
+
+    <section class="mt-12" aria-label="Perguntas frequentes" data-revelar>
+      <h2 class="font-mono text-sm font-bold tracking-[0.25em] text-volt uppercase">// perguntas frequentes</h2>
+      <div class="mt-4">
+        <Faq perguntas={faq} />
+      </div>
+    </section>
+  </article>
+</BaseLayout>
