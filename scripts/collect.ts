@@ -21,9 +21,9 @@ async function main() {
   const pending = await carregarPending();
   const seen = new Set(pending.seen);
   const naBase = new Set(codigos.map((c) => `${c.jogo}:${c.codigo}`));
-  const jaPendentes = new Set(
-    pending.candidatos.filter((c) => c.status === 'aguardando').map((c) => c.id),
-  );
+  // Dedup contra TODOS os candidatos: rejeitado não volta a propor, e
+  // aguardando não duplica a fila de aprovação.
+  const jaVistos = new Set(pending.candidatos.map((c) => c.id));
 
   let itensNovos = 0;
   let candidatosNovos = 0;
@@ -45,7 +45,7 @@ async function main() {
 
         const novos = achados.filter((a) => {
           const id = `${jogo.slug}:${a.codigo}`;
-          return !naBase.has(id) && !jaPendentes.has(id);
+          return !naBase.has(id) && !jaVistos.has(id);
         });
         if (novos.length === 0) continue;
 
@@ -72,7 +72,7 @@ async function main() {
             candidato.telegramMessageId = await mandarAprovacao(candidato, jogo);
           }
           pending.candidatos.push(candidato);
-          jaPendentes.add(candidato.id);
+          jaVistos.add(candidato.id);
           candidatosNovos++;
           console.log(`  + ${candidato.codigo} (${jogo.slug}, ${achado.confianca})`);
         }

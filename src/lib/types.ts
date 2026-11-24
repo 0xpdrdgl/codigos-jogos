@@ -3,7 +3,7 @@
  * (scripts/) e a renderização do site (src/pages).
  */
 
-export type TipoFonte = 'reddit' | 'rss';
+export type TipoFonte = 'reddit' | 'rss' | 'html' | 'hoyolab';
 
 export interface Fonte {
   tipo: TipoFonte;

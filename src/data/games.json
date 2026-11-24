@@ -8,8 +8,8 @@
       "oficial": "https://genshin.hoyoverse.com/pt/",
       "resgateOficial": "https://genshin.hoyoverse.com/en/gift",
       "resgateInGame": false,
-      "formatoCodigo": "[A-Z0-9]{12,16}",
-      "palavrasFormato": "12 a 16 letras maiúsculas e números, sem espaços",
+      "formatoCodigo": "[A-Z0-9]{10,16}",
+      "palavrasFormato": "10 a 16 letras maiúsculas e números, sem espaços",
       "passosResgate": [
         "Abra a página oficial de resgate (genshin.hoyoverse.com/en/gift) ou cole o link na barra de endereço.",
         "Faça login com a conta HoYoverse que você usa no jogo.",
@@ -18,8 +18,26 @@
         "As recompensas chegam no correio do jogo em alguns minutos; é preciso estar no Rank de Aventura 10 ou mais."
       ],
       "fontes": [
-        { "tipo": "reddit", "url": "https://www.reddit.com/r/Genshin_Impact.json?limit=50", "rotulo": "r/Genshin_Impact" },
-        { "tipo": "reddit", "url": "https://www.reddit.com/r/Genshin_Impact/search.json?q=code&restrict_sr=1&sort=new&t=week&limit=50", "rotulo": "busca code em r/Genshin_Impact" }
+        {
+          "tipo": "hoyolab",
+          "url": "https://bbs-api-os.hoyolab.com/community/post/wapi/getNewsList?gids=2&page_size=15&type=3",
+          "rotulo": "anúncios oficiais HoYoLAB"
+        },
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/Genshin_Impact.json?limit=50",
+          "rotulo": "r/Genshin_Impact"
+        },
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/Genshin_Impact/search.json?q=code&restrict_sr=1&sort=new&t=week&limit=50",
+          "rotulo": "busca code em r/Genshin_Impact"
+        },
+        {
+          "tipo": "html",
+          "url": "https://genshin-impact.fandom.com/wiki/Redemption_Code",
+          "rotulo": "wiki da comunidade"
+        }
       ],
       "faq": [
         {
@@ -44,16 +62,34 @@
       "oficial": "https://hsr.hoyoverse.com/pt-br/",
       "resgateOficial": "https://hsr.hoyoverse.com/gift",
       "resgateInGame": true,
-      "formatoCodigo": "[A-Z0-9]{12,16}",
-      "palavrasFormato": "12 a 16 letras maiúsculas e números, sem espaços",
+      "formatoCodigo": "[A-Z0-9]{10,16}",
+      "palavrasFormato": "10 a 16 letras maiúsculas e números, sem espaços",
       "passosResgate": [
         "Opção 1 — no jogo: abra o menu do celular (canto superior esquerdo), toque nos três pontos ao lado do nome do Desbravador e escolha \"Código de resgate\".",
         "Opção 2 — no site: acesse hsr.hoyoverse.com/gift, faça login, selecione o servidor e cole o código.",
         "As recompensas chegam no correio do jogo; é preciso desbloquear a caixa de correio concluindo o tutorial inicial."
       ],
       "fontes": [
-        { "tipo": "reddit", "url": "https://www.reddit.com/r/HonkaiStarRail.json?limit=50", "rotulo": "r/HonkaiStarRail" },
-        { "tipo": "reddit", "url": "https://www.reddit.com/r/HonkaiStarRail/search.json?q=code&restrict_sr=1&sort=new&t=week&limit=50", "rotulo": "busca code em r/HonkaiStarRail" }
+        {
+          "tipo": "hoyolab",
+          "url": "https://bbs-api-os.hoyolab.com/community/post/wapi/getNewsList?gids=6&page_size=15&type=3",
+          "rotulo": "anúncios oficiais HoYoLAB"
+        },
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/HonkaiStarRail.json?limit=50",
+          "rotulo": "r/HonkaiStarRail"
+        },
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/HonkaiStarRail/search.json?q=code&restrict_sr=1&sort=new&t=week&limit=50",
+          "rotulo": "busca code em r/HonkaiStarRail"
+        },
+        {
+          "tipo": "html",
+          "url": "https://honkai-star-rail.fandom.com/wiki/Redemption_Code",
+          "rotulo": "wiki da comunidade"
+        }
       ],
       "faq": [
         {
@@ -74,15 +110,29 @@
       "oficial": "https://zenless.hoyoverse.com/pt/",
       "resgateOficial": "https://zenless.hoyoverse.com/redemption",
       "resgateInGame": true,
-      "formatoCodigo": "[A-Z0-9]{12,16}",
-      "palavrasFormato": "12 a 16 letras maiúsculas e números, sem espaços",
+      "formatoCodigo": "[A-Z0-9]{10,16}",
+      "palavrasFormato": "10 a 16 letras maiúsculas e números, sem espaços",
       "passosResgate": [
         "No jogo: abra o menu principal e vá em Mais → Códigos de resgate.",
         "Pelo site: acesse zenless.hoyoverse.com/redemption, faça login e cole o código.",
         "As recompensas chegam no correio do jogo em poucos minutos."
       ],
       "fontes": [
-        { "tipo": "reddit", "url": "https://www.reddit.com/r/ZZZ_Official.json?limit=50", "rotulo": "r/ZZZ_Official" }
+        {
+          "tipo": "hoyolab",
+          "url": "https://bbs-api-os.hoyolab.com/community/post/wapi/getNewsList?gids=8&page_size=15&type=3",
+          "rotulo": "anúncios oficiais HoYoLAB"
+        },
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/ZZZ_Official.json?limit=50",
+          "rotulo": "r/ZZZ_Official"
+        },
+        {
+          "tipo": "html",
+          "url": "https://zenless-zone-zero.fandom.com/wiki/Redemption_Code",
+          "rotulo": "wiki da comunidade"
+        }
       ],
       "faq": [
         {
@@ -108,7 +158,11 @@
         "Os itens chegam na aba de colecionáveis ou no cofre do jogo em até alguns minutos."
       ],
       "fontes": [
-        { "tipo": "reddit", "url": "https://www.reddit.com/r/freefire.json?limit=50", "rotulo": "r/freefire" }
+        {
+          "tipo": "reddit",
+          "url": "https://www.reddit.com/r/freefire.json?limit=50",
+          "rotulo": "r/freefire"
+        }
       ],
       "faq": [
         {
